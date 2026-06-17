@@ -471,6 +471,40 @@ section { padding: 120px 0; }
 .msg-img-wrap {
   margin-top: 10px; border-radius: 2px; overflow: hidden;
   border: 1px solid var(--divider);
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background: var(--black2);
+}
+.msg-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+.msg-img-protect-overlay {
+  position: absolute; inset: 0; z-index: 5;
+  background: transparent;
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+}
+.msg-img-watermark {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  opacity: 0.14;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: .1em;
+  transform: rotate(-22deg);
+  white-space: nowrap;
+  user-select: none;
 }
 .msg-img-caption {
   font-size: .75rem; color: var(--muted); margin-top: 6px;
@@ -1375,15 +1409,36 @@ function addImgMsg(imgUrl, caption, showPayment = false) {
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';
 
-  // Image with protection
+  // Image with multi-layer protection
   const imgWrap = document.createElement('div');
   imgWrap.className = 'msg-img-wrap';
+
   const img = document.createElement('img');
-  img.src = imgUrl; img.alt = 'AI Generated Design';
-  img.style.cssText = 'pointer-events:none;user-select:none;-webkit-user-drag:none;';
+  img.src = imgUrl;
+  img.alt = 'AI Generated Design Concept';
+  img.draggable = false;
   img.addEventListener('contextmenu', e => e.preventDefault());
   img.addEventListener('dragstart', e => e.preventDefault());
+
+  // Repeated watermark layer — survives screenshots/screen recording
+  const watermark = document.createElement('div');
+  watermark.className = 'msg-img-watermark';
+  watermark.textContent = 'ARCHIOZ PREVIEW — NOT FOR DOWNLOAD';
+  watermark.setAttribute('aria-hidden', 'true');
+
+  // Transparent blocking overlay — defeats right-click, long-press save, drag, and direct image interaction
+  const blocker = document.createElement('div');
+  blocker.className = 'msg-img-protect-overlay';
+  blocker.addEventListener('contextmenu', e => e.preventDefault());
+  blocker.addEventListener('dragstart', e => e.preventDefault());
+  blocker.addEventListener('touchstart', e => {
+    // allow tap-to-scroll but block long-press context menus
+  }, { passive: true });
+  blocker.addEventListener('selectstart', e => e.preventDefault());
+
   imgWrap.appendChild(img);
+  imgWrap.appendChild(watermark);
+  imgWrap.appendChild(blocker);
 
   const cap = document.createElement('p');
   cap.className = 'msg-img-caption'; cap.textContent = caption;
@@ -1394,8 +1449,8 @@ function addImgMsg(imgUrl, caption, showPayment = false) {
     const payBlock = document.createElement('div');
     payBlock.className = 'pay-prompt';
     payBlock.innerHTML = `
-      <h5>Your Design is Ready</h5>
-      <p>Complete payment to download your full drawing package — floor plan (PDF), 3D render (high-res), and specification sheet.</p>
+      <h5>Like What You See?</h5>
+      <p>This is your full concept preview — protected, but completely visible, so you know exactly what you're paying for. Complete payment to unlock your downloadable package: floor plan (PDF), 3D render (high-res, unwatermarked), and specification sheet.</p>
       <p style="margin-bottom:12px"><strong style="color:var(--gold)">₹ 4,999</strong> <span style="font-size:.78rem;color:var(--muted)">— One-time design fee</span></p>
       <button class="pay-btn" onclick="handlePayment()">Pay & Download Package →</button>
     `;
@@ -1407,6 +1462,47 @@ function addImgMsg(imgUrl, caption, showPayment = false) {
   area.appendChild(div);
   area.scrollTop = area.scrollHeight;
 }
+
+// ── GLOBAL CONTENT PROTECTION ───────────────────────
+// Applies site-wide to deter screenshot/save/print/devtools attempts on preview designs.
+// Note: no client-side method makes screenshots technically impossible (OS-level tools
+// and external cameras always remain a gap) — this raises the bar significantly and
+// blocks the common, casual methods (right-click save, drag-save, browser print, Ctrl+S,
+// and most browser screenshot shortcuts).
+(function setupContentProtection() {
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('.msg-img-wrap')) e.preventDefault();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    const k = e.key.toLowerCase();
+    // Block common save/print/devtools/screenshot shortcuts
+    const blockedCombos =
+      (e.ctrlKey && (k === 's' || k === 'p' || k === 'u')) ||
+      (e.metaKey && (k === 's' || k === 'p')) ||
+      (e.key === 'PrintScreen') ||
+      (e.metaKey && e.shiftKey && (k === '3' || k === '4' || k === '5')) || // Mac screenshot
+      (e.key === 'F12') ||
+      (e.ctrlKey && e.shiftKey && (k === 'i' || k === 'j' || k === 'c'));
+    if (blockedCombos) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Detect devtools opening via window size delta (heuristic, not foolproof)
+  let devtoolsWarned = false;
+  setInterval(function() {
+    const threshold = 160;
+    const widthDelta = window.outerWidth - window.innerWidth;
+    const heightDelta = window.outerHeight - window.innerHeight;
+    if ((widthDelta > threshold || heightDelta > threshold) && !devtoolsWarned) {
+      devtoolsWarned = true;
+      console.log('%cArchioz Design Studio', 'color:#C9A84C;font-size:16px;font-weight:bold;');
+      console.log('Design previews are protected content. Please respect our IP.');
+    }
+  }, 1000);
+})();
 
 function showTyping() {
   const area = document.getElementById('chat-area');
