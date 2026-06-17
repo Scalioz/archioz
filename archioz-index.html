@@ -1473,12 +1473,16 @@ async function callArchitectAI(userMessage, mode) {
 
     const reply = data.reply || 'I apologise — I encountered an issue. Please try again.';
     addMsg('ai', reply);
+    console.log('[Archioz Debug] AI reply received. isDesign:', isDesign, 'mode param:', mode);
 
     // If design mode — show a placeholder design image after response
     if (isDesign) {
+      console.log('[Archioz Debug] Design mode confirmed — scheduling image display in 800ms');
       setTimeout(() => {
+        console.log('[Archioz Debug] Showing typing indicator before image');
         showTyping();
         setTimeout(() => {
+          console.log('[Archioz Debug] Removing typing, about to call addImgMsg');
           removeTyping();
           // Use curated architectural Unsplash images as design placeholders
           const designImages = [
@@ -1488,7 +1492,13 @@ async function callArchitectAI(userMessage, mode) {
           ];
           const img = designImages[Math.floor(Math.random() * designImages.length)];
           const isFirstDesign = correctionsLeft === 2;
-          addImgMsg(img, isFirstDesign ? 'Concept Design — Floor Plan & 3D Render (Watermarked Preview)' : `Revised Design — Correction ${3 - correctionsLeft} of 2`, true);
+          console.log('[Archioz Debug] Calling addImgMsg with image:', img);
+          try {
+            addImgMsg(img, isFirstDesign ? 'Concept Design — Floor Plan & 3D Render (Watermarked Preview)' : `Revised Design — Correction ${3 - correctionsLeft} of 2`, true);
+            console.log('[Archioz Debug] addImgMsg completed successfully');
+          } catch (imgErr) {
+            console.error('[Archioz Debug] addImgMsg THREW AN ERROR:', imgErr);
+          }
           if (!isFirstDesign) {
             correctionsLeft--;
             updateCorrections();
@@ -1500,6 +1510,8 @@ async function callArchitectAI(userMessage, mode) {
           }
         }, 3000);
       }, 800);
+    } else {
+      console.log('[Archioz Debug] NOT design mode — image will not show. mode was:', mode);
     }
   } catch (err) {
     removeTyping();
