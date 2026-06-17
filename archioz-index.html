@@ -3,11 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Archioz Design Studio — Architecture, Interiors & Innovation. Premium architectural and interior design services in Chennai.">
-<title>Archioz Design Studio | Architecture • Interiors • Innovation</title>
+
+<!-- Primary SEO -->
+<title>Archioz Design Studio | Architecture, Interior Design & Construction in Chennai</title>
+<meta name="description" content="Archioz Design Studio is a Chennai-based architecture and interior design firm offering residential design, commercial design, home interiors, and showroom interiors. Get a free consultation today.">
+<meta name="keywords" content="architect chennai, interior designer chennai, villa design chennai, apartment interior design, residential architect, commercial architect chennai, showroom interior design, home interior design chennai, AI architecture design">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Archioz Design Studio">
+<link rel="canonical" href="https://archioz.com/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://archioz.com/">
+<meta property="og:title" content="Archioz Design Studio | Architecture, Interiors & Innovation">
+<meta property="og:description" content="Premium architecture and interior design services in Chennai — residential, commercial, and showroom design. Explore our portfolio or try our AI Design Studio.">
+<meta property="og:image" content="https://archioz.com/assets/archioz-logo.png">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="Archioz Design Studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Archioz Design Studio | Architecture, Interiors & Innovation">
+<meta name="twitter:description" content="Premium architecture and interior design services in Chennai. Explore our portfolio or try our AI Design Studio.">
+<meta name="twitter:image" content="https://archioz.com/assets/archioz-logo.png">
+
+<!-- Geo / Local SEO -->
+<meta name="geo.region" content="IN-TN">
+<meta name="geo.placename" content="Chennai">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Structured Data — LocalBusiness / Architect -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Architect",
+  "name": "Archioz Design Studio",
+  "image": "https://archioz.com/assets/archioz-logo.png",
+  "@id": "https://archioz.com/",
+  "url": "https://archioz.com/",
+  "telephone": "+91-90430-02745",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "127 Vallal Yusuf Nagar, Rajakilpakkam",
+    "addressLocality": "Chennai",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "600073",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "12.9100",
+    "longitude": "80.1500"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "10:00",
+    "closes": "19:00"
+  },
+  "sameAs": [],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Space Design" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Space Design" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Interiors" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Showroom Interiors" } }
+  ]
+}
+</script>
+
 <style>
 /* ═══════════════════════════════════════════════
    TOKENS
@@ -329,9 +397,37 @@ section { padding: 120px 0; }
   padding: 5px 12px; border-radius: 1px;
 }
 
-/* ═══════════════════════════════════════════════
-   PORTFOLIO
-═══════════════════════════════════════════════ */
+.svc-block { margin-bottom: 72px; }
+.svc-block:last-child { margin-bottom: 0; }
+.svc-block-head { max-width: 760px; margin-bottom: 36px; }
+.svc-block-head .svc-num {
+  display: inline-block;
+  font-family: var(--font-display); font-size: 1rem; color: var(--gold-dim);
+  letter-spacing: .1em; margin-bottom: 12px;
+}
+.svc-block-title {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 400;
+  color: var(--white); margin-bottom: 14px;
+}
+.svc-block-desc { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+.svc-subgrid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.svc-subcard {
+  background: var(--card); border: 1px solid var(--divider); border-radius: 2px;
+  overflow: hidden; transition: border-color .25s, transform .25s;
+}
+.svc-subcard:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+.svc-sub-img { aspect-ratio: 4/3; overflow: hidden; }
+.svc-sub-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.svc-subcard:hover .svc-sub-img img { transform: scale(1.06); }
+.svc-subcard h4 {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 400;
+  color: var(--white); padding: 18px 18px 8px;
+}
+.svc-subcard p { font-size: .82rem; color: var(--muted); line-height: 1.65; padding: 0 18px 18px; }
+@media(max-width: 1024px) { .svc-subgrid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 600px) { .svc-subgrid { grid-template-columns: 1fr; } }
 #portfolio { background: var(--black2); }
 .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 24px; }
 .filter-tabs { display: flex; gap: 0; flex-wrap: wrap; }
@@ -373,8 +469,75 @@ section { padding: 120px 0; }
 .port-overlay p { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
 
 /* ═══════════════════════════════════════════════
-   DIY SECTION
+   CASE STUDY CARDS & MODAL
 ═══════════════════════════════════════════════ */
+.case-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.case-card {
+  background: var(--card); border: 1px solid var(--divider); border-radius: 2px;
+  overflow: hidden; cursor: pointer;
+  transition: border-color .25s, transform .25s;
+  display: none;
+}
+.case-card.show { display: block; }
+.case-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+.case-card-img { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+.case-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.case-card:hover .case-card-img img { transform: scale(1.06); }
+.case-card-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  background: rgba(10,10,10,.85); backdrop-filter: blur(6px);
+  color: var(--gold); font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 20px; border: 1px solid var(--gold-dim);
+}
+.case-card-body { padding: 20px; }
+.case-card-body h4 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.case-card-body p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+.case-card-cta { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+
+#case-modal {
+  display: none; position: fixed; inset: 0; z-index: 3000;
+  background: rgba(0,0,0,.92); backdrop-filter: blur(10px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+#case-modal.open { display: flex; }
+.case-modal-inner {
+  background: var(--black2); border: 1px solid var(--divider); border-radius: 4px;
+  max-width: 920px; width: 100%; max-height: 88vh; overflow-y: auto;
+  position: relative;
+}
+#case-modal-close {
+  position: absolute; top: 16px; right: 16px; z-index: 5;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(10,10,10,.85); color: var(--white); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+#case-modal-close:hover { background: var(--gold); color: var(--black); }
+.cm-hero { aspect-ratio: 16/9; overflow: hidden; }
+.cm-hero img { width: 100%; height: 100%; object-fit: cover; }
+.cm-body { padding: 36px 40px 44px; }
+.cm-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.cm-title { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: var(--white); margin-bottom: 16px; }
+.cm-meta { display: flex; gap: 28px; margin-bottom: 24px; flex-wrap: wrap; }
+.cm-meta-item { font-size: .78rem; color: var(--muted); }
+.cm-meta-item strong { display: block; color: var(--white); font-size: .85rem; margin-bottom: 2px; }
+.cm-overview { font-size: .9rem; color: var(--muted); line-height: 1.85; margin-bottom: 32px; }
+.cm-section-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.cm-section-label::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
+.cm-view-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 36px; }
+.cm-view-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; border: 1px solid var(--divider); }
+@media(max-width: 900px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 600px) {
+  .case-grid { grid-template-columns: 1fr; }
+  .cm-view-grid { grid-template-columns: 1fr; }
+  .cm-body { padding: 28px 22px 32px; }
+  .cm-meta { gap: 18px; }
+}
 #diy {
   background: var(--black);
   border-top: 1px solid var(--divider);
@@ -471,6 +634,40 @@ section { padding: 120px 0; }
 .msg-img-wrap {
   margin-top: 10px; border-radius: 2px; overflow: hidden;
   border: 1px solid var(--divider);
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background: var(--black2);
+}
+.msg-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+.msg-img-protect-overlay {
+  position: absolute; inset: 0; z-index: 5;
+  background: transparent;
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+}
+.msg-img-watermark {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  opacity: 0.14;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: .1em;
+  transform: rotate(-22deg);
+  white-space: nowrap;
+  user-select: none;
 }
 .msg-img-caption {
   font-size: .75rem; color: var(--muted); margin-top: 6px;
@@ -498,6 +695,18 @@ section { padding: 120px 0; }
   transition: background .2s;
 }
 .pay-btn:hover { background: var(--gold-pale); }
+.pay-btn:disabled { background: var(--divider); color: var(--muted); cursor: not-allowed; }
+.pay-btn:disabled:hover { background: var(--divider); }
+.consent-box { margin-bottom: 14px; }
+.consent-label {
+  display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+}
+.consent-checkbox {
+  margin-top: 3px; flex-shrink: 0; width: 15px; height: 15px; accent-color: var(--gold);
+  cursor: pointer;
+}
+.consent-label span { font-size: .76rem; color: var(--muted); line-height: 1.55; }
+.consent-label strong { color: var(--gold-pale); }
 
 /* Chat Input */
 .chat-input-area {
@@ -520,6 +729,22 @@ section { padding: 120px 0; }
   transition: background .2s;
 }
 .chat-send:hover { background: var(--gold-pale); }
+.chat-mic {
+  background: var(--card2); border: 1px solid var(--divider); color: var(--muted);
+  border-radius: 2px; width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.chat-mic svg { width: 18px; height: 18px; }
+.chat-mic:hover { border-color: var(--gold-dim); color: var(--gold); }
+.chat-mic.listening {
+  background: #C0392B; border-color: #C0392B; color: white;
+  animation: micPulse 1.2s infinite;
+}
+@keyframes micPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,.5); }
+  50% { box-shadow: 0 0 0 8px rgba(192,57,43,0); }
+}
 .chat-mode-bar {
   border-top: 1px solid var(--divider); padding: 8px 16px;
   display: flex; gap: 8px; align-items: center;
@@ -595,27 +820,32 @@ footer {
 }
 .footer-bottom p { font-size: .78rem; color: var(--muted); }
 .footer-bottom span { color: var(--gold); }
+.footer-social { display: flex; gap: 12px; margin-top: 22px; }
+.social-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--divider); display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: border-color .25s, color .25s, transform .2s;
+}
+.social-icon svg { width: 16px; height: 16px; }
+.social-icon:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
 /* ═══════════════════════════════════════════════
-   LIGHTBOX
+   FLOATING WHATSAPP BUTTON
 ═══════════════════════════════════════════════ */
-#lightbox {
-  display: none; position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,.95); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center;
+#float-wa {
+  position: fixed; bottom: 28px; right: 28px; z-index: 1500;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  transition: transform .2s;
 }
-#lightbox.open { display: flex; }
-#lightbox img {
-  max-width: 90vw; max-height: 85vh;
-  width: auto; height: auto; object-fit: contain;
-  border-radius: 2px;
+#float-wa:hover { transform: scale(1.08); }
+#float-wa svg { width: 28px; height: 28px; }
+@media(max-width: 768px) {
+  #float-wa { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+  #float-wa svg { width: 25px; height: 25px; }
 }
-#lightbox-close {
-  position: absolute; top: 24px; right: 32px;
-  color: var(--muted); font-size: 1.8rem;
-  transition: color .2s;
-}
-#lightbox-close:hover { color: var(--gold); }
 
 /* ═══════════════════════════════════════════════
    RESPONSIVE
@@ -816,57 +1046,136 @@ footer {
         Four specialised design verticals, one seamless creative process.
       </p>
     </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="svc-num">01</div>
-        <div class="svc-icon">🏡</div>
-        <h3 class="svc-title">Residential Space Design</h3>
-        <p class="svc-desc">From single-bedroom flats to sprawling gated communities, we design residential spaces that balance beauty with practicality — crafting homes that feel uniquely yours.</p>
-        <div class="svc-items">
-          <span class="svc-tag">Flats</span>
-          <span class="svc-tag">Apartments</span>
-          <span class="svc-tag">Villas</span>
-          <span class="svc-tag">Bungalows</span>
-          <span class="svc-tag">Stand-Alone Houses</span>
-          <span class="svc-tag">Complexes & Gated Communities</span>
-        </div>
+
+    <!-- 01 — RESIDENTIAL SPACE DESIGN -->
+    <div class="svc-block reveal">
+      <div class="svc-block-head">
+        <span class="svc-num">01</span>
+        <h3 class="svc-block-title">Residential Space Design</h3>
+        <p class="svc-block-desc">From single-bedroom flats to sprawling gated communities, we design residential spaces that balance beauty with practicality — crafting homes that feel uniquely yours.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-num">02</div>
-        <div class="svc-icon">🏢</div>
-        <h3 class="svc-title">Commercial Space Design</h3>
-        <p class="svc-desc">Commercial architecture that commands attention and drives footfall. We design retail, commercial, and mixed-use developments that work as hard as your business does.</p>
-        <div class="svc-items">
-          <span class="svc-tag">Shops</span>
-          <span class="svc-tag">Malls</span>
-          <span class="svc-tag">Commercial Complexes</span>
+      <div class="svc-subgrid">
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&q=75&auto=format&fit=crop" alt="Flat design" loading="lazy"></div>
+          <h4>Flats</h4>
+          <p>Smart, efficient layouts that make every square foot count — ideal for compact urban living without compromising on light or flow.</p>
         </div>
-      </div>
-      <div class="service-card">
-        <div class="svc-num">03</div>
-        <div class="svc-icon">🛋️</div>
-        <h3 class="svc-title">Residential Interiors</h3>
-        <p class="svc-desc">Interior spaces that reflect your personality and elevate daily living. We curate every element — material, light, texture — to create a home that feels as good as it looks.</p>
-        <div class="svc-items">
-          <span class="svc-tag">Home Interiors</span>
-          <span class="svc-tag">Living Spaces</span>
-          <span class="svc-tag">Kitchens</span>
-          <span class="svc-tag">Bedrooms</span>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&q=75&auto=format&fit=crop" alt="Apartment design" loading="lazy"></div>
+          <h4>Apartments</h4>
+          <p>Multi-room residential units designed for comfort and resale value, balancing private and shared spaces within the building's footprint.</p>
         </div>
-      </div>
-      <div class="service-card">
-        <div class="svc-num">04</div>
-        <div class="svc-icon">🏬</div>
-        <h3 class="svc-title">Showroom Interiors</h3>
-        <p class="svc-desc">Commercial interiors that are designed to convert — from premium showrooms to high-performance office environments. We design spaces that make your brand the experience.</p>
-        <div class="svc-items">
-          <span class="svc-tag">Office Interiors</span>
-          <span class="svc-tag">Showroom Design</span>
-          <span class="svc-tag">Retail Interiors</span>
-          <span class="svc-tag">Brand Environments</span>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&q=75&auto=format&fit=crop" alt="Villa design" loading="lazy"></div>
+          <h4>Villas</h4>
+          <p>Standalone luxury residences with generous proportions, private gardens, and a strong architectural identity that reflects the owner's stature.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=500&q=75&auto=format&fit=crop" alt="Bungalow design" loading="lazy"></div>
+          <h4>Bungalows</h4>
+          <p>Single or double-storey homes with classic proportions, blending traditional charm with contemporary functionality.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=75&auto=format&fit=crop" alt="Standalone house design" loading="lazy"></div>
+          <h4>Stand-Alone Houses</h4>
+          <p>Custom-built homes designed entirely around your family's needs — from plot orientation to room-by-room planning.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=75&auto=format&fit=crop" alt="Gated community design" loading="lazy"></div>
+          <h4>Complexes & Gated Communities</h4>
+          <p>Master-planned residential developments with shared amenities, security, and a cohesive architectural language across every unit.</p>
         </div>
       </div>
     </div>
+
+    <!-- 02 — COMMERCIAL SPACE DESIGN -->
+    <div class="svc-block reveal">
+      <div class="svc-block-head">
+        <span class="svc-num">02</span>
+        <h3 class="svc-block-title">Commercial Space Design</h3>
+        <p class="svc-block-desc">Commercial architecture that commands attention and drives footfall. We design retail, commercial, and mixed-use developments that work as hard as your business does.</p>
+      </div>
+      <div class="svc-subgrid">
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=75&auto=format&fit=crop" alt="Shop design" loading="lazy"></div>
+          <h4>Shops</h4>
+          <p>Storefront and interior layouts designed to maximise visibility, walk-in conversion, and brand presence on the street.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=500&q=75&auto=format&fit=crop" alt="Mall design" loading="lazy"></div>
+          <h4>Malls</h4>
+          <p>Large-format retail environments planned for footfall flow, tenant mix, and a memorable customer journey from entry to exit.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=75&auto=format&fit=crop" alt="Commercial complex design" loading="lazy"></div>
+          <h4>Commercial Complexes</h4>
+          <p>Mixed-use and multi-tenant commercial buildings designed for efficient circulation, parking, and long-term leasing appeal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 — RESIDENTIAL INTERIORS -->
+    <div class="svc-block reveal">
+      <div class="svc-block-head">
+        <span class="svc-num">03</span>
+        <h3 class="svc-block-title">Residential Interiors</h3>
+        <p class="svc-block-desc">Interior spaces that reflect your personality and elevate daily living. We curate every element — material, light, texture — to create a home that feels as good as it looks.</p>
+      </div>
+      <div class="svc-subgrid">
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=75&auto=format&fit=crop" alt="Home interior design" loading="lazy"></div>
+          <h4>Home Interiors</h4>
+          <p>Whole-home interior design covering every room with a consistent material palette and design language.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=75&auto=format&fit=crop" alt="Living space design" loading="lazy"></div>
+          <h4>Living Spaces</h4>
+          <p>Living and dining areas designed for both everyday comfort and entertaining guests with confidence.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=75&auto=format&fit=crop" alt="Kitchen design" loading="lazy"></div>
+          <h4>Kitchens</h4>
+          <p>Modular and functional kitchen layouts balancing workflow efficiency with a clean, modern aesthetic.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&q=75&auto=format&fit=crop" alt="Bedroom design" loading="lazy"></div>
+          <h4>Bedrooms</h4>
+          <p>Restful, well-lit bedroom interiors with thoughtful storage and a calm material palette.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 — SHOWROOM INTERIORS -->
+    <div class="svc-block reveal">
+      <div class="svc-block-head">
+        <span class="svc-num">04</span>
+        <h3 class="svc-block-title">Showroom Interiors</h3>
+        <p class="svc-block-desc">Commercial interiors that are designed to convert — from premium showrooms to high-performance office environments. We design spaces that make your brand the experience.</p>
+      </div>
+      <div class="svc-subgrid">
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=75&auto=format&fit=crop" alt="Office interior design" loading="lazy"></div>
+          <h4>Office Interiors</h4>
+          <p>Workspace design that balances productivity, collaboration zones, and a brand-forward first impression for visitors.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1562516155-e0c1ee44059b?w=500&q=75&auto=format&fit=crop" alt="Showroom design" loading="lazy"></div>
+          <h4>Showroom Design</h4>
+          <p>Product-led showroom layouts that guide customer movement and put your best products centre-stage.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=75&auto=format&fit=crop" alt="Retail interior design" loading="lazy"></div>
+          <h4>Retail Interiors</h4>
+          <p>In-store interior design optimised for product display, customer flow, and conversion at the point of sale.</p>
+        </div>
+        <div class="svc-subcard">
+          <div class="svc-sub-img"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=75&auto=format&fit=crop" alt="Brand environment design" loading="lazy"></div>
+          <h4>Brand Environments</h4>
+          <p>Immersive spatial branding that turns a physical space into a tangible extension of your brand identity.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -887,77 +1196,17 @@ footer {
       </div>
     </div>
 
-    <div class="portfolio-grid reveal" id="portfolio-grid">
-      <!-- RESIDENTIAL -->
-      <div class="port-item show" data-cat="residential" data-title="Villa — Adyar" data-sub="Residential Design">
-        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=75&auto=format&fit=crop" alt="Villa design Adyar Chennai" loading="lazy">
-        <div class="port-overlay"><h4>Villa — Adyar</h4><p>Residential Design</p></div>
-      </div>
-      <div class="port-item show" data-cat="residential" data-title="Luxury Apartment — OMR" data-sub="Residential Design">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=75&auto=format&fit=crop" alt="Luxury apartment OMR Chennai" loading="lazy">
-        <div class="port-overlay"><h4>Luxury Apartment — OMR</h4><p>Residential Design</p></div>
-      </div>
-      <div class="port-item show" data-cat="residential" data-title="Gated Community — Tambaram" data-sub="Residential Complex">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=75&auto=format&fit=crop" alt="Gated community Tambaram" loading="lazy">
-        <div class="port-overlay"><h4>Gated Community — Tambaram</h4><p>Residential Complex</p></div>
-      </div>
-      <div class="port-item show" data-cat="residential" data-title="Bungalow — Nungambakkam" data-sub="Residential Design">
-        <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=75&auto=format&fit=crop" alt="Bungalow Nungambakkam" loading="lazy">
-        <div class="port-overlay"><h4>Bungalow — Nungambakkam</h4><p>Residential Design</p></div>
-      </div>
-      <div class="port-item show" data-cat="residential" data-title="Flat Renovation — T Nagar" data-sub="Residential Design">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75&auto=format&fit=crop" alt="Flat renovation T Nagar" loading="lazy">
-        <div class="port-overlay"><h4>Flat Renovation — T Nagar</h4><p>Residential Design</p></div>
-      </div>
-
-      <!-- COMMERCIAL -->
-      <div class="port-item show" data-cat="commercial" data-title="Commercial Complex — Guindy" data-sub="Commercial Design">
-        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=75&auto=format&fit=crop" alt="Commercial complex Guindy" loading="lazy">
-        <div class="port-overlay"><h4>Commercial Complex — Guindy</h4><p>Commercial Design</p></div>
-      </div>
-      <div class="port-item show" data-cat="commercial" data-title="Retail Mall — Anna Nagar" data-sub="Commercial Design">
-        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=600&q=75&auto=format&fit=crop" alt="Retail mall Anna Nagar" loading="lazy">
-        <div class="port-overlay"><h4>Retail Mall — Anna Nagar</h4><p>Commercial Design</p></div>
-      </div>
-      <div class="port-item show" data-cat="commercial" data-title="Shop Row — Velachery" data-sub="Commercial Design">
-        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=75&auto=format&fit=crop" alt="Shop design Velachery" loading="lazy">
-        <div class="port-overlay"><h4>Shop Row — Velachery</h4><p>Commercial Design</p></div>
-      </div>
-
-      <!-- INTERIORS -->
-      <div class="port-item show" data-cat="interiors" data-title="Home Interior — Boat Club Rd" data-sub="Residential Interiors">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=75&auto=format&fit=crop" alt="Home interior Boat Club Road" loading="lazy">
-        <div class="port-overlay"><h4>Home Interior — Boat Club Rd</h4><p>Residential Interiors</p></div>
-      </div>
-      <div class="port-item show" data-cat="interiors" data-title="Living Room Redesign — ECR" data-sub="Residential Interiors">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=75&auto=format&fit=crop" alt="Living room ECR" loading="lazy">
-        <div class="port-overlay"><h4>Living Room Redesign — ECR</h4><p>Residential Interiors</p></div>
-      </div>
-      <div class="port-item show" data-cat="interiors" data-title="Kitchen & Dining — Besant Nagar" data-sub="Residential Interiors">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75&auto=format&fit=crop" alt="Kitchen dining Besant Nagar" loading="lazy">
-        <div class="port-overlay"><h4>Kitchen & Dining — Besant Nagar</h4><p>Residential Interiors</p></div>
-      </div>
-      <div class="port-item show" data-cat="interiors" data-title="Master Bedroom — Kilpauk" data-sub="Residential Interiors">
-        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=75&auto=format&fit=crop" alt="Master bedroom Kilpauk" loading="lazy">
-        <div class="port-overlay"><h4>Master Bedroom — Kilpauk</h4><p>Residential Interiors</p></div>
-      </div>
-
-      <!-- SHOWROOM / OFFICE -->
-      <div class="port-item show" data-cat="showroom" data-title="Automobile Showroom — GST Rd" data-sub="Showroom Interiors">
-        <img src="https://images.unsplash.com/photo-1562516155-e0c1ee44059b?w=600&q=75&auto=format&fit=crop" alt="Automobile showroom GST Road" loading="lazy">
-        <div class="port-overlay"><h4>Automobile Showroom — GST Rd</h4><p>Showroom Interiors</p></div>
-      </div>
-      <div class="port-item show" data-cat="showroom" data-title="Corporate Office — Tidel Park" data-sub="Office Interiors">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&auto=format&fit=crop" alt="Corporate office Tidel Park" loading="lazy">
-        <div class="port-overlay"><h4>Corporate Office — Tidel Park</h4><p>Office Interiors</p></div>
-      </div>
-      <div class="port-item show" data-cat="showroom" data-title="Jewellery Showroom — T Nagar" data-sub="Showroom Interiors">
-        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=75&auto=format&fit=crop" alt="Jewellery showroom T Nagar" loading="lazy">
-        <div class="port-overlay"><h4>Jewellery Showroom — T Nagar</h4><p>Showroom Interiors</p></div>
-      </div>
-    </div>
+    <div class="case-grid reveal" id="case-grid"></div>
   </div>
 </section>
+
+<!-- Case Study Modal -->
+<div id="case-modal">
+  <div class="case-modal-inner">
+    <button id="case-modal-close">✕</button>
+    <div id="case-modal-content"></div>
+  </div>
+</div>
 
 <!-- ═══ DIY AI DESIGN STUDIO ═══════════════════════ -->
 <section id="diy">
@@ -1014,7 +1263,7 @@ footer {
               <div class="ai-dot gold"></div>
               <div class="ai-dot dim"></div>
               <div class="ai-dot dim"></div>
-              <span class="ai-title" style="margin-left:8px">Archioz AI Design Studio</span>
+              <span class="ai-title" style="margin-left:8px">Zara — Archioz AI Architect</span>
             </div>
             <span class="ai-badge">✦ Powered by AI</span>
           </div>
@@ -1053,6 +1302,9 @@ footer {
             <div class="chat-area" id="chat-area"></div>
             <div class="chat-input-area">
               <textarea class="chat-textarea" id="chat-input" placeholder="Ask anything about architecture, or describe your space for a design..." rows="1"></textarea>
+              <button class="chat-mic" id="chat-mic" title="Speak in any language">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M9 22h6"/></svg>
+              </button>
               <button class="chat-send" id="chat-send" title="Send">➤</button>
             </div>
           </div>
@@ -1110,20 +1362,20 @@ footer {
           <div class="form-row">
             <div class="form-group">
               <label>Full Name</label>
-              <input type="text" class="form-input" placeholder="Your name">
+              <input type="text" class="form-input" id="cf-name" placeholder="Your name">
             </div>
             <div class="form-group">
               <label>Phone / WhatsApp</label>
-              <input type="tel" class="form-input" placeholder="+91...">
+              <input type="tel" class="form-input" id="cf-phone" placeholder="+91...">
             </div>
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" class="form-input" placeholder="your@email.com">
+            <input type="email" class="form-input" id="cf-email" placeholder="your@email.com">
           </div>
           <div class="form-group">
             <label>Service Required</label>
-            <select class="form-select">
+            <select class="form-select" id="cf-service">
               <option value="" disabled selected>Select a service...</option>
               <option>Residential Space Design</option>
               <option>Commercial Space Design</option>
@@ -1135,9 +1387,9 @@ footer {
           </div>
           <div class="form-group">
             <label>Project Brief</label>
-            <textarea class="form-textarea" placeholder="Tell us about your project — type, size, location, timeline, and any specific requirements..."></textarea>
+            <textarea class="form-textarea" id="cf-brief" placeholder="Tell us about your project — type, size, location, timeline, and any specific requirements..."></textarea>
           </div>
-          <button class="form-submit" onclick="handleContactSubmit(event)">Send Enquiry →</button>
+          <button class="form-submit" onclick="handleContactSubmit(event)">Send Enquiry on WhatsApp →</button>
         </div>
       </div>
     </div>
@@ -1153,6 +1405,23 @@ footer {
           <img src="assets/archioz-logo.png" alt="Archioz Design Studio" loading="lazy">
         </div>
         <p class="footer-about">Crafting exceptional spaces across Chennai since our founding. Architecture, interiors, and innovation — brought together under one roof.</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" title="Instagram (link to be added)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-icon" aria-label="Pinterest" title="Pinterest (link to be added)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 21c1-2 2-6 2.5-8.5M12 12c1.5 0 3-1 3-3s-1.5-3-3.5-3c-2.5 0-4 1.8-4 3.8 0 1.2.6 2 1 2.2"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube" title="YouTube (link to be added)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/919043002745" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.8-7.1M20.5 11.5L21.5 21l-4.2-2.2"/><path d="M8.5 9.5c0 4 3 7 7 7"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-icon" aria-label="Google Business Profile" title="Google Business Profile (link to be added)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 0 0 20M12 2a15 15 0 0 1 0 20M2.5 9h19M2.5 15h19"/></svg>
+          </a>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Services</h5>
@@ -1182,11 +1451,10 @@ footer {
   </div>
 </footer>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
-</div>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/919043002745?text=Hello%20Archioz%20Design%20Studio%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener" id="float-wa" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.6-1.3 1.18-1.78 1.25-.46.07-1.03.1-1.66-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.07-1.42-1.07-2.71s.68-1.92.92-2.18c.24-.26.52-.33.7-.33h.5c.16 0 .38-.06.59.45.22.53.74 1.83.8 1.96.07.13.11.29.02.46-.32.65-.68.9-.9 1.15-.13.14-.27.3-.12.56.62 1.1 1.27 1.84 2.2 2.46.78.52 1.26.69 1.45.77.18.08.29.07.4-.05.14-.16.6-.66.76-.89.16-.23.32-.19.53-.11.21.08 1.36.66 1.6.78.23.12.39.18.45.28.06.1.06.59-.16 1.18z"/></svg>
+</a>
 
 <!-- ═══ SCRIPTS ═══════════════════════════════════════ -->
 <script>
@@ -1224,52 +1492,374 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// ── PORTFOLIO FILTER ─────────────────────────────────
+// ── CASE STUDY DATA ──────────────────────────────────
+// To add more projects: just add another object to this array.
+// category must be one of: residential | commercial | interiors | showroom
+const CASE_STUDIES = [
+  {
+    category: 'residential',
+    badge: 'Residential Design',
+    title: 'Villa — Adyar',
+    location: 'Adyar, Chennai',
+    area: '4,200 sq ft',
+    type: 'Independent Villa',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A contemporary independent villa designed for a joint family, balancing private wings for two generations with shared common spaces. The brief called for abundant natural light, cross-ventilation, and a strong street-facing elevation that reflects the owners\' stature without appearing ostentatious.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'residential',
+    badge: 'Residential Design',
+    title: 'Luxury Apartment — OMR',
+    location: 'OMR, Chennai',
+    area: '1,850 sq ft',
+    type: '3BHK Apartment',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A premium 3BHK apartment layout reworked for a young IT-professional family, prioritising an open-plan living-dining zone, a work-from-home nook, and maximised storage without compromising on circulation space.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'residential',
+    badge: 'Residential Complex',
+    title: 'Gated Community — Tambaram',
+    location: 'Tambaram, Chennai',
+    area: '2.5 acres',
+    type: '48-Unit Gated Community',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A master-planned 48-unit residential community designed around a central landscaped courtyard, with consistent architectural language across all units, dedicated parking, and shared amenity blocks including a clubhouse and children\'s play area.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'residential',
+    badge: 'Residential Design',
+    title: 'Bungalow — Nungambakkam',
+    location: 'Nungambakkam, Chennai',
+    area: '3,100 sq ft',
+    type: 'Double-Storey Bungalow',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A classic double-storey bungalow renovation that preserved the original facade character while completely reworking the interior layout for modern family living, including a new home office and an expanded kitchen.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'residential',
+    badge: 'Residential Design',
+    title: 'Flat Renovation — T Nagar',
+    location: 'T Nagar, Chennai',
+    area: '950 sq ft',
+    type: '2BHK Flat Renovation',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A full renovation of a 20-year-old 2BHK flat, reconfiguring the kitchen and living area to feel significantly larger through smart wall removal and an updated material palette throughout.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'commercial',
+    badge: 'Commercial Design',
+    title: 'Commercial Complex — Guindy',
+    location: 'Guindy, Chennai',
+    area: '38,000 sq ft',
+    type: 'Multi-Tenant Commercial Building',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A ground-plus-five commercial building designed for mixed retail and office tenancy, with an efficient core layout, dedicated visitor parking, and a facade designed to stand out along a busy commercial corridor.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'commercial',
+    badge: 'Commercial Design',
+    title: 'Retail Mall — Anna Nagar',
+    location: 'Anna Nagar, Chennai',
+    area: '62,000 sq ft',
+    type: 'Retail Mall',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A three-level retail mall designed around a central atrium for natural light and clear wayfinding, with anchor tenant spaces on the ground floor and a food court designed to maximise dwell time.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'commercial',
+    badge: 'Commercial Design',
+    title: 'Shop Row — Velachery',
+    location: 'Velachery, Chennai',
+    area: '6,400 sq ft',
+    type: 'Retail Shop Row',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A row of eight independent retail units designed with consistent street-facing signage zones and shared back-of-house service access, maximising leasing flexibility for the developer.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'interiors',
+    badge: 'Residential Interiors',
+    title: 'Home Interior — Boat Club Road',
+    location: 'Boat Club Road, Chennai',
+    area: '3,400 sq ft',
+    type: 'Whole-Home Interior',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A complete interior overhaul for a premium independent home, unifying every room under a warm, contemporary material palette of wood, natural stone, and brushed metal accents.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'interiors',
+    badge: 'Residential Interiors',
+    title: 'Living Room Redesign — ECR',
+    location: 'East Coast Road, Chennai',
+    area: '620 sq ft (living area)',
+    type: 'Living & Dining Interior',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A living and dining room redesign for a beachside weekend home, using a relaxed, light material palette and large-format glazing to bring the coastal view indoors.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'interiors',
+    badge: 'Residential Interiors',
+    title: 'Kitchen & Dining — Besant Nagar',
+    location: 'Besant Nagar, Chennai',
+    area: '340 sq ft',
+    type: 'Modular Kitchen & Dining',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A modular kitchen and adjoining dining redesign focused on workflow efficiency for a family that cooks daily, with a dedicated pantry zone and a breakfast counter doubling as a casual dining spot.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'interiors',
+    badge: 'Residential Interiors',
+    title: 'Master Bedroom — Kilpauk',
+    location: 'Kilpauk, Chennai',
+    area: '280 sq ft',
+    type: 'Master Bedroom Interior',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A calm, restful master bedroom redesign with an integrated walk-in wardrobe, layered lighting design, and a muted material palette chosen to support better sleep quality.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'showroom',
+    badge: 'Showroom Interiors',
+    title: 'Automobile Showroom — GST Road',
+    location: 'GST Road, Chennai',
+    area: '8,200 sq ft',
+    type: 'Automobile Showroom',
+    year: '2025',
+    heroImg: 'https://images.unsplash.com/photo-1562516155-e0c1ee44059b?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A full-format automobile showroom designed to brand specification, with a double-height display zone for hero vehicles, a dedicated customer lounge, and a separate service reception wing.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1562516155-e0c1ee44059b?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'showroom',
+    badge: 'Office Interiors',
+    title: 'Corporate Office — Tidel Park',
+    location: 'Tidel Park, Chennai',
+    area: '12,500 sq ft',
+    type: 'Corporate Office Interior',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A full-floor corporate office interior for a 150-seat IT services company, balancing open-plan collaborative desking with enclosed meeting pods and a branded reception experience.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+  {
+    category: 'showroom',
+    badge: 'Showroom Interiors',
+    title: 'Jewellery Showroom — T Nagar',
+    location: 'T Nagar, Chennai',
+    area: '4,800 sq ft',
+    type: 'Jewellery Retail Showroom',
+    year: '2024',
+    heroImg: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80&auto=format&fit=crop',
+    overview: 'A premium jewellery showroom interior designed around secure, well-lit display casework, private VIP consultation rooms, and a material palette of marble and brass to reinforce a luxury brand position.',
+    plan2d: [
+      'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=600&q=75&auto=format&fit=crop',
+    ],
+    render3d: [
+      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=75&auto=format&fit=crop',
+    ],
+  },
+];
+
+// ── RENDER CASE CARDS ─────────────────────────────────
+function renderCaseCards() {
+  const grid = document.getElementById('case-grid');
+  grid.innerHTML = CASE_STUDIES.map((c, i) => `
+    <div class="case-card show" data-cat="${c.category}" data-index="${i}">
+      <div class="case-card-img">
+        <span class="case-card-badge">${c.badge}</span>
+        <img src="${c.heroImg}" alt="${c.title}" loading="lazy">
+      </div>
+      <div class="case-card-body">
+        <h4>${c.title}</h4>
+        <p>${c.type} · ${c.area}</p>
+        <div class="case-card-cta"><span>View Case Study</span><span>→</span></div>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.case-card').forEach(card => {
+    card.addEventListener('click', () => openCaseModal(parseInt(card.dataset.index)));
+  });
+}
+renderCaseCards();
+
+// ── CASE STUDY FILTER ─────────────────────────────────
 document.querySelectorAll('.filter-tab').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = btn.dataset.filter;
-    document.querySelectorAll('.port-item').forEach(item => {
+    document.querySelectorAll('.case-card').forEach(item => {
       const show = filter === 'all' || item.dataset.cat === filter;
       item.classList.toggle('show', show);
     });
   });
 });
 
-// Portfolio lightbox
-document.querySelectorAll('.port-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const img = item.querySelector('img');
-    openLightbox(img.src, img.alt);
-  });
-});
-
-function openLightbox(src, alt) {
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
-  lbImg.src = src; lbImg.alt = alt;
-  lb.classList.add('open');
+// ── CASE STUDY MODAL ──────────────────────────────────
+function openCaseModal(index) {
+  const c = CASE_STUDIES[index];
+  const content = document.getElementById('case-modal-content');
+  content.innerHTML = `
+    <div class="cm-hero"><img src="${c.heroImg}" alt="${c.title}"></div>
+    <div class="cm-body">
+      <div class="cm-eyebrow">${c.badge}</div>
+      <h2 class="cm-title">${c.title}</h2>
+      <div class="cm-meta">
+        <div class="cm-meta-item"><strong>${c.location}</strong>Location</div>
+        <div class="cm-meta-item"><strong>${c.type}</strong>Project Type</div>
+        <div class="cm-meta-item"><strong>${c.area}</strong>Area</div>
+        <div class="cm-meta-item"><strong>${c.year}</strong>Year</div>
+      </div>
+      <p class="cm-overview">${c.overview}</p>
+      <div class="cm-section-label">2D Floor Plan</div>
+      <div class="cm-view-grid">
+        ${c.plan2d.map(img => `<img src="${img}" alt="${c.title} floor plan" loading="lazy">`).join('')}
+      </div>
+      <div class="cm-section-label">3D Visualisation</div>
+      <div class="cm-view-grid">
+        ${c.render3d.map(img => `<img src="${img}" alt="${c.title} 3D render" loading="lazy">`).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('case-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
+function closeCaseModal() {
+  document.getElementById('case-modal').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('lightbox').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) closeLightbox();
+document.getElementById('case-modal-close').addEventListener('click', closeCaseModal);
+document.getElementById('case-modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeCaseModal();
 });
 
 // ── CONTACT FORM ─────────────────────────────────────
 function handleContactSubmit(e) {
   e.preventDefault();
-  const btn = e.target;
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = '✓ Enquiry Sent — We\'ll be in touch shortly';
-    btn.style.background = '#1E7C3B';
-  }, 1200);
+  const name = document.getElementById('cf-name').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const service = document.getElementById('cf-service').value;
+  const brief = document.getElementById('cf-brief').value.trim();
+
+  if (!name || !phone) {
+    alert('Please enter at least your name and phone number.');
+    return;
+  }
+
+  const lines = [
+    `Hello Archioz Design Studio, I'd like to enquire about a project.`,
+    ``,
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    email ? `Email: ${email}` : null,
+    service ? `Service Required: ${service}` : null,
+    brief ? `Project Brief: ${brief}` : null,
+  ].filter(Boolean).join('\n');
+
+  const archiozWhatsAppNumber = '919043002745'; // no + or leading zeros, country code included
+  const waUrl = `https://wa.me/${archiozWhatsAppNumber}?text=${encodeURIComponent(lines)}`;
+  window.open(waUrl, '_blank');
 }
 
 // ── AI CHAT ──────────────────────────────────────────
@@ -1312,7 +1902,7 @@ function handleOtpSubmit() {
     document.getElementById('otp-gate').style.display = 'none';
     const chatUI = document.getElementById('chat-ui');
     chatUI.style.display = 'flex';
-    addMsg('ai', `Welcome, ${userName || 'there'}! 👋\n\nI'm your Archioz AI Architect. I can help you with:\n\n📐 **Design Mode** — Describe your space and I'll generate 2D floor plans and 3D concepts.\n\n💬 **Consult Mode** — Ask me anything about architecture, materials, regulations, construction — anything.\n\nHow can I help you today?`);
+    addMsg('ai', `Welcome, ${userName || 'there'}! 👋\n\nI'm **Zara**, your Archioz AI Architect. I can help you with:\n\n📐 **Design Mode** — Describe your space and I'll generate 2D floor plans and 3D concepts.\n\n💬 **Consult Mode** — Ask me anything about architecture, materials, regulations, construction — anything.\n\n🌐 You can type or speak to me in any language — I'll reply in the same language. Use the 🎤 icon to speak.\n\nHow can I help you today?`);
   }, 1200);
 }
 
@@ -1339,6 +1929,69 @@ document.getElementById('chat-input').addEventListener('input', function() {
   this.style.height = 'auto';
   this.style.height = Math.min(this.scrollHeight, 120) + 'px';
 });
+
+// ── VOICE TO TEXT (multilingual) ──────────────────────
+// Uses the browser's built-in Web Speech API. Supported in Chrome, Edge, Safari (latest).
+// Auto-detects language is not natively supported by the API, so we default to a broad
+// language set and let the user's spoken words pass through — Zara's backend then
+// detects the language from the transcribed text itself and replies in kind.
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognizer = null;
+let isListening = false;
+
+if (SpeechRecognition) {
+  recognizer = new SpeechRecognition();
+  recognizer.continuous = false;
+  recognizer.interimResults = true;
+  recognizer.maxAlternatives = 1;
+  // 'auto' language detection isn't universally supported; default to a common multilingual-friendly tag.
+  // Browsers will still often transcribe other languages reasonably if spoken clearly.
+  recognizer.lang = navigator.language || 'en-IN';
+
+  const micBtn = document.getElementById('chat-mic');
+  const chatInputEl = document.getElementById('chat-input');
+
+  micBtn.addEventListener('click', () => {
+    if (isListening) {
+      recognizer.stop();
+      return;
+    }
+    try {
+      recognizer.start();
+      isListening = true;
+      micBtn.classList.add('listening');
+    } catch (err) {
+      console.error('Speech recognition error:', err);
+    }
+  });
+
+  recognizer.addEventListener('result', (event) => {
+    let transcript = '';
+    for (let i = 0; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript;
+    }
+    chatInputEl.value = transcript;
+    chatInputEl.style.height = 'auto';
+    chatInputEl.style.height = Math.min(chatInputEl.scrollHeight, 120) + 'px';
+  });
+
+  recognizer.addEventListener('end', () => {
+    isListening = false;
+    micBtn.classList.remove('listening');
+  });
+
+  recognizer.addEventListener('error', (event) => {
+    isListening = false;
+    micBtn.classList.remove('listening');
+    if (event.error === 'not-allowed') {
+      addMsg('ai', 'I need microphone access to hear you. Please allow microphone permissions in your browser and try again.');
+    }
+  });
+} else {
+  // Hide mic button gracefully if browser doesn't support speech recognition
+  const micBtn = document.getElementById('chat-mic');
+  if (micBtn) micBtn.style.display = 'none';
+}
 
 function sendMessage() {
   if (awaitingPayment) { addMsg('ai', 'Please complete payment to download your design, or start a new design request.'); return; }
@@ -1375,15 +2028,36 @@ function addImgMsg(imgUrl, caption, showPayment = false) {
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';
 
-  // Image with protection
+  // Image with multi-layer protection
   const imgWrap = document.createElement('div');
   imgWrap.className = 'msg-img-wrap';
+
   const img = document.createElement('img');
-  img.src = imgUrl; img.alt = 'AI Generated Design';
-  img.style.cssText = 'pointer-events:none;user-select:none;-webkit-user-drag:none;';
+  img.src = imgUrl;
+  img.alt = 'AI Generated Design Concept';
+  img.draggable = false;
   img.addEventListener('contextmenu', e => e.preventDefault());
   img.addEventListener('dragstart', e => e.preventDefault());
+
+  // Repeated watermark layer — survives screenshots/screen recording
+  const watermark = document.createElement('div');
+  watermark.className = 'msg-img-watermark';
+  watermark.textContent = 'ARCHIOZ PREVIEW — NOT FOR DOWNLOAD';
+  watermark.setAttribute('aria-hidden', 'true');
+
+  // Transparent blocking overlay — defeats right-click, long-press save, drag, and direct image interaction
+  const blocker = document.createElement('div');
+  blocker.className = 'msg-img-protect-overlay';
+  blocker.addEventListener('contextmenu', e => e.preventDefault());
+  blocker.addEventListener('dragstart', e => e.preventDefault());
+  blocker.addEventListener('touchstart', e => {
+    // allow tap-to-scroll but block long-press context menus
+  }, { passive: true });
+  blocker.addEventListener('selectstart', e => e.preventDefault());
+
   imgWrap.appendChild(img);
+  imgWrap.appendChild(watermark);
+  imgWrap.appendChild(blocker);
 
   const cap = document.createElement('p');
   cap.className = 'msg-img-caption'; cap.textContent = caption;
@@ -1393,20 +2067,88 @@ function addImgMsg(imgUrl, caption, showPayment = false) {
   if (showPayment) {
     const payBlock = document.createElement('div');
     payBlock.className = 'pay-prompt';
+    const consentId = 'consent-' + Date.now();
     payBlock.innerHTML = `
-      <h5>Your Design is Ready</h5>
-      <p>Complete payment to download your full drawing package — floor plan (PDF), 3D render (high-res), and specification sheet.</p>
+      <h5>Like What You See?</h5>
+      <p>This is your full concept preview — protected, but completely visible, so you know exactly what you're paying for. Complete payment to unlock your downloadable package: floor plan (PDF), 3D render (high-res, unwatermarked), and specification sheet.</p>
+      <div class="consent-box">
+        <label class="consent-label">
+          <input type="checkbox" id="${consentId}" class="consent-checkbox">
+          <span>I understand this is an <strong>AI-generated concept design</strong>, not a certified architectural drawing. It has not been reviewed by a licensed architect or structural/MEP engineer, and is <strong>not approved for construction</strong>. Regulatory approval (CMDA/DTCP) and construction require review and sign-off by a qualified professional, which Archioz offers as a separate service. I accept full responsibility for any use of this concept design prior to such professional review.</span>
+        </label>
+      </div>
       <p style="margin-bottom:12px"><strong style="color:var(--gold)">₹ 4,999</strong> <span style="font-size:.78rem;color:var(--muted)">— One-time design fee</span></p>
-      <button class="pay-btn" onclick="handlePayment()">Pay & Download Package →</button>
+      <button class="pay-btn" id="pay-btn-${consentId}" onclick="handlePaymentWithConsent('${consentId}')" disabled>Pay & Download Package →</button>
     `;
     bubble.appendChild(payBlock);
     awaitingPayment = true;
+
+    // Enable pay button only once consent checkbox is ticked
+    setTimeout(() => {
+      const checkbox = document.getElementById(consentId);
+      const payButton = document.getElementById('pay-btn-' + consentId);
+      if (checkbox && payButton) {
+        checkbox.addEventListener('change', () => {
+          payButton.disabled = !checkbox.checked;
+        });
+      }
+    }, 0);
   }
 
   div.appendChild(avatar); div.appendChild(bubble);
   area.appendChild(div);
   area.scrollTop = area.scrollHeight;
 }
+
+function handlePaymentWithConsent(consentId) {
+  const checkbox = document.getElementById(consentId);
+  if (!checkbox || !checkbox.checked) {
+    alert('Please acknowledge the disclaimer before proceeding to payment.');
+    return;
+  }
+  handlePayment();
+}
+
+// ── GLOBAL CONTENT PROTECTION ───────────────────────
+// Applies site-wide to deter screenshot/save/print/devtools attempts on preview designs.
+// Note: no client-side method makes screenshots technically impossible (OS-level tools
+// and external cameras always remain a gap) — this raises the bar significantly and
+// blocks the common, casual methods (right-click save, drag-save, browser print, Ctrl+S,
+// and most browser screenshot shortcuts).
+(function setupContentProtection() {
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('.msg-img-wrap')) e.preventDefault();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    const k = e.key.toLowerCase();
+    // Block common save/print/devtools/screenshot shortcuts
+    const blockedCombos =
+      (e.ctrlKey && (k === 's' || k === 'p' || k === 'u')) ||
+      (e.metaKey && (k === 's' || k === 'p')) ||
+      (e.key === 'PrintScreen') ||
+      (e.metaKey && e.shiftKey && (k === '3' || k === '4' || k === '5')) || // Mac screenshot
+      (e.key === 'F12') ||
+      (e.ctrlKey && e.shiftKey && (k === 'i' || k === 'j' || k === 'c'));
+    if (blockedCombos) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Detect devtools opening via window size delta (heuristic, not foolproof)
+  let devtoolsWarned = false;
+  setInterval(function() {
+    const threshold = 160;
+    const widthDelta = window.outerWidth - window.innerWidth;
+    const heightDelta = window.outerHeight - window.innerHeight;
+    if ((widthDelta > threshold || heightDelta > threshold) && !devtoolsWarned) {
+      devtoolsWarned = true;
+      console.log('%cArchioz Design Studio', 'color:#C9A84C;font-size:16px;font-weight:bold;');
+      console.log('Design previews are protected content. Please respect our IP.');
+    }
+  }, 1000);
+})();
 
 function showTyping() {
   const area = document.getElementById('chat-area');
@@ -1436,8 +2178,39 @@ function updateCorrections() {
 }
 
 function handlePayment() {
-  addMsg('ai', '✓ **Payment Gateway Integration** — In the live version, this will open Razorpay/Stripe for secure payment. Upon confirmation, your design package (floor plan PDF + high-res 3D render + specification sheet) will be available for download immediately.\n\n🎉 Thank you for using Archioz AI Design Studio!');
-  awaitingPayment = false;
+  // ⚠️ Replace 'rzp_test_XXXXXXXXXXXX' with your actual Razorpay Key ID before going live.
+  // Test mode keys (rzp_test_...) let you test the full flow without real money moving.
+  const RAZORPAY_KEY_ID = 'rzp_test_XXXXXXXXXXXX';
+
+  if (RAZORPAY_KEY_ID.includes('XXXXXXXXXXXX')) {
+    addMsg('ai', '⚠️ **Razorpay Key Not Configured** — Add your Razorpay Key ID in the code to enable real payments. Once configured, this button opens a secure Razorpay checkout for ₹4,999.');
+    return;
+  }
+
+  const options = {
+    key: RAZORPAY_KEY_ID,
+    amount: 499900, // amount in paise (₹4,999 × 100)
+    currency: 'INR',
+    name: 'Archioz Design Studio',
+    description: 'AI Concept Design Package',
+    image: 'assets/archioz-logo.png',
+    handler: function (response) {
+      addMsg('ai', `✓ **Payment Successful** — Payment ID: ${response.razorpay_payment_id}\n\nYour design package (floor plan PDF, high-res 3D render, specification sheet) is ready for download.\n\n⚠️ **Important:** This is an AI-generated concept design. It has not been reviewed or certified by a licensed architect or structural/MEP engineer, and is not approved for construction. Please consult Archioz's professional team before proceeding to construction.\n\n🎉 Thank you for using Zara, your Archioz AI Architect!`);
+      awaitingPayment = false;
+    },
+    prefill: {
+      name: userName || '',
+    },
+    theme: { color: '#C9A84C' },
+    modal: {
+      ondismiss: function () {
+        addMsg('ai', 'Payment was not completed. You can try again whenever you\'re ready.');
+      }
+    }
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
 }
 
 // ── BACKEND CONFIG ──────────────────────────────────
