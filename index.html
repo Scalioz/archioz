@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Archioz Design Studio — Architecture, Interiors & Innovation. Premium architectural and interior design services in Chennai.">
+<title>Archioz Design Studio | Architecture • Interiors • Innovation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --black:    #0A0A0A;
+  --black2:   #111111;
+  --card:     #161616;
+  --card2:    #1E1E1E;
+  --divider:  #2A2A2A;
+  --gold:     #C9A84C;
+  --gold-dim: #9A7A32;
+  --gold-pale:#E8D5A0;
+  --white:    #F5F0E8;
+  --muted:    #888880;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --nav-h: 72px;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+@media(max-width:768px){ .container { padding: 0 20px; } }
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  transition: background .4s var(--ease), border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+#nav.scrolled {
+  background: rgba(10,10,10,.95);
+  backdrop-filter: blur(12px);
+  border-color: var(--divider);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+}
+.nav-logo img {
+  height: 52px; width: auto;
+  object-fit: contain;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 40px; list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted);
+  transition: color .25s;
+  position: relative;
+}
+.nav-links a::after {
+  content:''; position: absolute; bottom:-4px; left:0; right:0;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s var(--ease);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--black); background: var(--gold);
+  padding: 11px 24px; border-radius: 2px;
+  transition: background .25s, transform .2s;
+}
+.nav-cta:hover { background: var(--gold-pale); transform: translateY(-1px); }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 6px; border-radius: 2px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--white); border-radius: 1px;
+  transition: transform .3s, opacity .2s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ═══════════════════════════════════════════════
+   MOBILE NAV
+═══════════════════════════════════════════════ */
+#mobile-nav {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,10,10,.98); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+  opacity: 0; transition: opacity .35s;
+}
+#mobile-nav.open { display: flex; opacity: 1; }
+#mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 300; letter-spacing: .04em;
+  color: var(--white); transition: color .2s;
+}
+#mobile-nav a:hover { color: var(--gold); }
+#mobile-nav .m-cta {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--black); background: var(--gold); padding: 13px 32px; border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  background: var(--black);
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(135deg, #0A0A0A 0%, #111108 60%, #0d0d00 100%);
+}
+/* SVG Blueprint lines */
+.blueprint-svg {
+  position: absolute; inset: 0; z-index: 1; opacity: .18;
+  pointer-events: none;
+}
+.bp-line { stroke: var(--gold); stroke-width: 0.5; fill: none; stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+.bp-line-fast { stroke: var(--gold); stroke-width: 0.3; fill: none; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+.bp-circle { stroke: var(--gold); stroke-width: 0.4; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; }
+.draw { animation: draw-line 2.8s var(--ease) forwards; }
+.draw-slow { animation: draw-line 4s var(--ease) forwards; }
+.draw-fast { animation: draw-line 1.8s var(--ease) .4s forwards; }
+@keyframes draw-line { to { stroke-dashoffset: 0; } }
+
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(90deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.5) 60%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 3;
+  max-width: 800px; padding-top: var(--nav-h);
+}
+.hero-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0; animation: fadeUp .8s var(--ease) .3s forwards;
+}
+.hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background: var(--gold); }
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: .02em;
+  color: var(--white);
+  opacity: 0; animation: fadeUp .9s var(--ease) .5s forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  margin-top: 28px; max-width: 460px;
+  font-size: .95rem; font-weight: 300; color: var(--muted); line-height: 1.8;
+  opacity: 0; animation: fadeUp .9s var(--ease) .7s forwards;
+}
+.hero-actions {
+  margin-top: 44px; display: flex; gap: 18px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s var(--ease) .9s forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  background: var(--gold); color: var(--black);
+  padding: 15px 32px; border-radius: 2px;
+  transition: background .25s, transform .2s;
+}
+.btn-primary:hover { background: var(--gold-pale); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  border: 1px solid var(--divider); color: var(--white);
+  padding: 15px 32px; border-radius: 2px;
+  transition: border-color .25s, color .25s, transform .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.hero-stats {
+  position: absolute; bottom: 48px; right: 0; z-index: 3;
+  display: flex; gap: 48px; padding: 0 40px;
+  opacity: 0; animation: fadeUp .9s var(--ease) 1.1s forwards;
+}
+.stat-item { text-align: right; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem; font-weight: 300; color: var(--gold);
+  line-height: 1;
+}
+.stat-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+/* ═══════════════════════════════════════════════
+   FADE ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════════ */
+section { padding: 120px 0; }
+.section-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.section-eyebrow::before { content:''; display:block; width:24px; height:1px; background: var(--gold); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 300; line-height: 1.15;
+  color: var(--white);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.gold-rule { width: 60px; height: 1px; background: var(--gold); margin: 28px 0; }
+
+/* ═══════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════ */
+#about { background: var(--black2); border-top: 1px solid var(--divider); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.about-img-wrap {
+  position: relative; aspect-ratio: 4/5; border-radius: 2px; overflow: hidden;
+}
+.about-img-wrap::after {
+  content:''; position: absolute; inset: 0;
+  border: 1px solid var(--gold-dim); border-radius: 2px;
+  transform: translate(14px, 14px);
+  pointer-events: none;
+}
+.about-tag {
+  position: absolute; bottom: 24px; left: 24px; z-index: 2;
+  background: rgba(10,10,10,.85); backdrop-filter: blur(8px);
+  border: 1px solid var(--divider); border-radius: 2px;
+  padding: 12px 20px;
+}
+.about-tag p { font-size: 11px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.about-tag strong { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); }
+.about-text p { font-size: .95rem; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+.about-vals { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.about-val {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 20px; border: 1px solid var(--divider); border-radius: 2px;
+  transition: border-color .25s;
+}
+.about-val:hover { border-color: var(--gold-dim); }
+.about-val-icon { color: var(--gold); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+.about-val h4 { font-size: .85rem; font-weight: 500; letter-spacing: .08em; margin-bottom: 3px; }
+.about-val p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* ═══════════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════════ */
+#services { background: var(--black); }
+.services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--divider); border: 1px solid var(--divider);
+}
+.service-card {
+  background: var(--card); padding: 48px 44px;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+  cursor: pointer;
+}
+.service-card::before {
+  content:''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: var(--gold); transform: scaleY(0); transform-origin: bottom;
+  transition: transform .4s var(--ease);
+}
+.service-card:hover { background: var(--card2); }
+.service-card:hover::before { transform: scaleY(1); }
+.svc-num {
+  font-family: var(--font-display); font-size: .9rem; color: var(--gold-dim);
+  letter-spacing: .1em; margin-bottom: 24px;
+}
+.svc-icon { font-size: 1.8rem; margin-bottom: 20px; }
+.svc-title {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 400;
+  color: var(--white); margin-bottom: 12px;
+}
+.svc-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+.svc-items { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-dim); border: 1px solid var(--divider);
+  padding: 5px 12px; border-radius: 1px;
+}
+
+/* ═══════════════════════════════════════════════
+   PORTFOLIO
+═══════════════════════════════════════════════ */
+#portfolio { background: var(--black2); }
+.portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 24px; }
+.filter-tabs { display: flex; gap: 0; flex-wrap: wrap; }
+.filter-tab {
+  font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); background: none;
+  padding: 10px 20px; border: 1px solid var(--divider);
+  margin-left: -1px; transition: all .25s;
+}
+.filter-tab.active, .filter-tab:hover {
+  color: var(--black); background: var(--gold); border-color: var(--gold); z-index: 1;
+}
+.portfolio-grid {
+  columns: 3; column-gap: 16px;
+}
+.port-item {
+  break-inside: avoid; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+  border-radius: 2px; cursor: pointer;
+  display: none;
+}
+.port-item.show { display: block; }
+.port-item img {
+  width: 100%; height: auto; display: block;
+  transition: transform .6s var(--ease);
+}
+.port-item:hover img { transform: scale(1.04); }
+.port-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(10,10,10,.9) 0%, transparent 50%);
+  opacity: 0; transition: opacity .35s;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px;
+}
+.port-item:hover .port-overlay { opacity: 1; }
+.port-overlay h4 {
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--white); margin-bottom: 4px;
+}
+.port-overlay p { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   DIY SECTION
+═══════════════════════════════════════════════ */
+#diy {
+  background: var(--black);
+  border-top: 1px solid var(--divider);
+}
+.diy-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+.diy-info .section-title { margin-bottom: 24px; }
+.diy-info p { font-size: .9rem; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+.diy-steps { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+.diy-step { display: flex; gap: 18px; align-items: flex-start; }
+.diy-step-num {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
+  color: var(--gold); line-height: 1; flex-shrink: 0; width: 32px;
+}
+.diy-step-text h4 { font-size: .88rem; font-weight: 500; margin-bottom: 4px; }
+.diy-step-text p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+.diy-limits {
+  margin-top: 28px; padding: 16px 20px;
+  border: 1px solid var(--divider); border-radius: 2px;
+  background: var(--card);
+}
+.diy-limits p { font-size: .8rem; color: var(--muted); margin: 0; }
+.diy-limits strong { color: var(--gold); }
+
+/* ── AI CHAT WINDOW ─────────────────────────── */
+.ai-window {
+  background: var(--card); border: 1px solid var(--divider);
+  border-radius: 4px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  display: flex; flex-direction: column;
+  height: 640px;
+}
+.ai-titlebar {
+  background: var(--card2); border-bottom: 1px solid var(--divider);
+  padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+}
+.ai-titlebar-left { display: flex; align-items: center; gap: 10px; }
+.ai-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ai-dot.gold { background: var(--gold); }
+.ai-dot.dim { background: var(--divider); }
+.ai-title { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ai-badge {
+  font-size: 9px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-dim);
+  padding: 3px 8px; border-radius: 20px;
+}
+
+/* Auth Gate */
+.auth-gate {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 32px; gap: 24px;
+}
+.auth-gate h3 {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 300;
+  color: var(--white); text-align: center;
+}
+.auth-gate p { font-size: .85rem; color: var(--muted); text-align: center; line-height: 1.7; }
+.auth-form { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px; }
+.auth-input {
+  background: var(--black2); border: 1px solid var(--divider);
+  color: var(--white); font-family: var(--font-body); font-size: .85rem;
+  padding: 12px 16px; border-radius: 2px; width: 100%;
+  transition: border-color .2s;
+}
+.auth-input:focus { outline: none; border-color: var(--gold-dim); }
+.auth-input::placeholder { color: var(--muted); }
+.auth-btn {
+  background: var(--gold); color: var(--black);
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  padding: 13px; border-radius: 2px; width: 100%;
+  transition: background .2s;
+}
+.auth-btn:hover { background: var(--gold-pale); }
+.auth-note { font-size: .75rem; color: var(--muted); text-align: center; }
+
+/* Chat */
+.chat-area { flex: 1; overflow-y: auto; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px; }
+.chat-area::-webkit-scrollbar { width: 3px; }
+.chat-area::-webkit-scrollbar-thumb { background: var(--divider); }
+.msg { display: flex; gap: 10px; max-width: 88%; }
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg-avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.msg.ai .msg-avatar { background: var(--gold); color: var(--black); }
+.msg.user .msg-avatar { background: var(--divider); color: var(--white); }
+.msg-bubble {
+  padding: 10px 14px; border-radius: 2px;
+  font-size: .85rem; line-height: 1.65;
+}
+.msg.ai .msg-bubble { background: var(--card2); color: var(--white); }
+.msg.user .msg-bubble { background: var(--gold); color: var(--black); }
+.msg-img-wrap {
+  margin-top: 10px; border-radius: 2px; overflow: hidden;
+  border: 1px solid var(--divider);
+}
+.msg-img-caption {
+  font-size: .75rem; color: var(--muted); margin-top: 6px;
+  padding: 0 2px; font-style: italic;
+}
+.typing-dots { display: flex; gap: 4px; align-items: center; height: 20px; }
+.typing-dots span {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  animation: bounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+
+/* Payment Prompt */
+.pay-prompt {
+  background: var(--card2); border: 1px solid var(--gold-dim);
+  border-radius: 2px; padding: 16px; margin-top: 10px;
+}
+.pay-prompt h5 { font-family: var(--font-display); font-size: 1rem; color: var(--gold); margin-bottom: 6px; }
+.pay-prompt p { font-size: .8rem; color: var(--muted); margin-bottom: 12px; }
+.pay-btn {
+  font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  background: var(--gold); color: var(--black); padding: 10px 20px; border-radius: 2px;
+  transition: background .2s;
+}
+.pay-btn:hover { background: var(--gold-pale); }
+
+/* Chat Input */
+.chat-input-area {
+  border-top: 1px solid var(--divider); padding: 16px;
+  display: flex; gap: 10px; align-items: flex-end;
+}
+.chat-textarea {
+  flex: 1; background: var(--black2); border: 1px solid var(--divider);
+  color: var(--white); font-family: var(--font-body); font-size: .85rem;
+  padding: 10px 14px; border-radius: 2px; resize: none;
+  min-height: 42px; max-height: 120px; line-height: 1.5;
+  transition: border-color .2s;
+}
+.chat-textarea:focus { outline: none; border-color: var(--gold-dim); }
+.chat-textarea::placeholder { color: var(--muted); }
+.chat-send {
+  background: var(--gold); color: var(--black); border-radius: 2px;
+  width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+  transition: background .2s;
+}
+.chat-send:hover { background: var(--gold-pale); }
+.chat-mode-bar {
+  border-top: 1px solid var(--divider); padding: 8px 16px;
+  display: flex; gap: 8px; align-items: center;
+}
+.mode-btn {
+  font-size: 9px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--divider);
+  padding: 5px 10px; border-radius: 1px; transition: all .2s;
+}
+.mode-btn.active { color: var(--gold); border-color: var(--gold-dim); }
+.corrections-left { margin-left: auto; font-size: .75rem; color: var(--muted); }
+.corrections-left strong { color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════ */
+#contact { background: var(--black2); border-top: 1px solid var(--divider); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+.contact-info-items { margin-top: 36px; display: flex; flex-direction: column; gap: 24px; }
+.contact-info-item { display: flex; gap: 16px; align-items: flex-start; }
+.c-icon {
+  width: 42px; height: 42px; background: var(--card);
+  border: 1px solid var(--divider); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; transition: border-color .25s;
+}
+.contact-info-item:hover .c-icon { border-color: var(--gold-dim); }
+.c-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.c-val { font-size: .9rem; color: var(--white); }
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.form-input, .form-textarea, .form-select {
+  background: var(--card); border: 1px solid var(--divider);
+  color: var(--white); font-family: var(--font-body); font-size: .88rem;
+  padding: 13px 16px; border-radius: 2px; width: 100%;
+  transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { outline: none; border-color: var(--gold-dim); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-select { appearance: none; cursor: pointer; }
+.form-select option { background: var(--card); }
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-submit {
+  background: var(--gold); color: var(--black);
+  font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  padding: 15px 32px; border-radius: 2px; width: 100%;
+  transition: background .25s, transform .2s;
+}
+.form-submit:hover { background: var(--gold-pale); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--black); border-top: 1px solid var(--divider);
+  padding: 60px 0 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo img { height: 48px; width: auto; object-fit: contain; margin-bottom: 16px; }
+.footer-about { font-size: .85rem; color: var(--muted); line-height: 1.8; max-width: 280px; }
+.footer-col h5 {
+  font-size: 10px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 11px; }
+.footer-links a { font-size: .87rem; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid var(--divider); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: .78rem; color: var(--muted); }
+.footer-bottom span { color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════ */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.95); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 90vw; max-height: 85vh;
+  width: auto; height: auto; object-fit: contain;
+  border-radius: 2px;
+}
+#lightbox-close {
+  position: absolute; top: 24px; right: 32px;
+  color: var(--muted); font-size: 1.8rem;
+  transition: color .2s;
+}
+#lightbox-close:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .diy-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 28px; }
+}
+@media(max-width: 768px) {
+  section { padding: 80px 0; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .services-grid { grid-template-columns: 1fr; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+  .portfolio-grid { columns: 2; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { position: static; margin-top: 48px; padding: 0; justify-content: flex-start; gap: 32px; }
+  .about-img-wrap { aspect-ratio: 16/9; }
+  .ai-window { height: 560px; }
+}
+@media(max-width: 480px) {
+  .portfolio-grid { columns: 1; }
+  .filter-tabs { gap: 0; }
+  .filter-tab { padding: 8px 14px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .bp-line, .bp-line-fast, .bp-circle { animation: none; stroke-dashoffset: 0; }
+  .reveal { opacity: 1; transform: none; }
+  .hero-eyebrow, .hero-h1, .hero-sub, .hero-actions, .hero-stats { animation: none; opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/archioz-logo.png" alt="Archioz Design Studio" loading="eager">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#diy">Design Studio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Consultation</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobile-nav">
+  <a href="#about" class="m-link">About Us</a>
+  <a href="#services" class="m-link">Services</a>
+  <a href="#portfolio" class="m-link">Portfolio</a>
+  <a href="#diy" class="m-link">Design Studio</a>
+  <a href="#contact" class="m-link">Contact</a>
+  <a href="#contact" class="m-cta">Get Consultation</a>
+</div>
+
+<!-- ═══ HERO ═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Blueprint SVG Animation -->
+  <svg class="blueprint-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Floor plan lines -->
+    <rect x="700" y="80" width="680" height="500" class="bp-line draw-slow" style="animation-delay:.2s"/>
+    <rect x="730" y="110" width="260" height="200" class="bp-line draw" style="animation-delay:.5s"/>
+    <rect x="1020" y="110" width="330" height="200" class="bp-line draw" style="animation-delay:.7s"/>
+    <rect x="730" y="340" width="620" height="220" class="bp-line draw" style="animation-delay:.9s"/>
+    <line x1="730" y1="200" x2="1350" y2="200" class="bp-line-fast draw-fast" style="animation-delay:1s"/>
+    <line x1="990" y1="110" x2="990" y2="340" class="bp-line-fast draw-fast" style="animation-delay:1.1s"/>
+    <line x1="990" y1="340" x2="990" y2="560" class="bp-line-fast draw-fast" style="animation-delay:1.2s"/>
+    <line x1="1100" y1="340" x2="1100" y2="560" class="bp-line-fast draw-fast" style="animation-delay:1.3s"/>
+    <circle cx="850" cy="640" r="80" class="bp-circle draw" style="animation-delay:1.4s"/>
+    <circle cx="850" cy="640" r="50" class="bp-circle draw" style="animation-delay:1.6s"/>
+    <!-- Cross hairs -->
+    <line x1="700" y1="640" x2="1000" y2="640" class="bp-line-fast draw-fast" style="animation-delay:1.8s"/>
+    <line x1="850" y1="580" x2="850" y2="700" class="bp-line-fast draw-fast" style="animation-delay:1.9s"/>
+    <!-- Dimension marks -->
+    <line x1="700" y1="620" x2="700" y2="660" class="bp-line-fast draw-fast" style="animation-delay:2s"/>
+    <line x1="1000" y1="620" x2="1000" y2="660" class="bp-line-fast draw-fast" style="animation-delay:2s"/>
+    <line x1="1150" y1="80" x2="1150" y2="60" class="bp-line-fast draw-fast" style="animation-delay:2.1s"/>
+    <line x1="1350" y1="80" x2="1350" y2="60" class="bp-line-fast draw-fast" style="animation-delay:2.1s"/>
+    <line x1="1150" y1="60" x2="1350" y2="60" class="bp-line-fast draw-fast" style="animation-delay:2.2s"/>
+    <!-- Compass arc -->
+    <path d="M 1280 700 A 60 60 0 0 1 1340 640" class="bp-circle draw" style="animation-delay:2.2s"/>
+    <line x1="1280" y1="700" x2="1310" y2="640" class="bp-line-fast draw-fast" style="animation-delay:2.4s"/>
+    <line x1="1340" y1="640" x2="1310" y2="640" class="bp-line-fast draw-fast" style="animation-delay:2.4s"/>
+  </svg>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Architecture · Interiors · Innovation</div>
+    <h1 class="hero-h1">
+      Where Vision<br>
+      Meets <em>Structure</em>
+    </h1>
+    <p class="hero-sub">
+      Archioz Design Studio crafts spaces that transcend the ordinary — blending architectural precision with interior artistry to create environments that inspire, endure, and tell your story.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <span>View Our Work</span>
+        <span>→</span>
+      </a>
+      <a href="#diy" class="btn-ghost">
+        <span>✦</span>
+        <span>Try AI Design Studio</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">120<span style="font-size:1.4rem">+</span></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Design Verticals</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop"
+          alt="Archioz Design Studio — architectural workspace"
+          loading="lazy"
+        >
+        <div class="about-tag">
+          <p>Est.</p>
+          <strong>Chennai</strong>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">About Us</div>
+        <h2 class="section-title">Designing Spaces That <em>Define Lives</em></h2>
+        <div class="gold-rule"></div>
+        <p>Archioz Design Studio is a Chennai-based architecture and interior design firm dedicated to creating spaces that are as functional as they are beautiful. We approach every project as a unique narrative — listening deeply, designing boldly, and delivering with precision.</p>
+        <p>From intimate residential interiors to landmark commercial complexes, our multidisciplinary team brings together architectural rigour and creative instinct to produce environments that stand the test of time.</p>
+        <div class="about-vals">
+          <div class="about-val">
+            <div class="about-val-icon">◈</div>
+            <div>
+              <h4>Precision by Design</h4>
+              <p>Every dimension, material, and detail is resolved before a single wall goes up.</p>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">◈</div>
+            <div>
+              <h4>Client-First Philosophy</h4>
+              <p>Your vision is our brief. We translate aspirations into architecture.</p>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">◈</div>
+            <div>
+              <h4>End-to-End Excellence</h4>
+              <p>From concept drawings to construction supervision — we own every phase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-title">Our <em>Services</em></h2>
+      </div>
+      <p style="max-width:340px;font-size:.88rem;color:var(--muted);line-height:1.8">
+        Four specialised design verticals, one seamless creative process.
+      </p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🏡</div>
+        <h3 class="svc-title">Residential Space Design</h3>
+        <p class="svc-desc">From single-bedroom flats to sprawling gated communities, we design residential spaces that balance beauty with practicality — crafting homes that feel uniquely yours.</p>
+        <div class="svc-items">
+          <span class="svc-tag">Flats</span>
+          <span class="svc-tag">Apartments</span>
+          <span class="svc-tag">Villas</span>
+          <span class="svc-tag">Bungalows</span>
+          <span class="svc-tag">Stand-Alone Houses</span>
+          <span class="svc-tag">Complexes & Gated Communities</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">🏢</div>
+        <h3 class="svc-title">Commercial Space Design</h3>
+        <p class="svc-desc">Commercial architecture that commands attention and drives footfall. We design retail, commercial, and mixed-use developments that work as hard as your business does.</p>
+        <div class="svc-items">
+          <span class="svc-tag">Shops</span>
+          <span class="svc-tag">Malls</span>
+          <span class="svc-tag">Commercial Complexes</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🛋️</div>
+        <h3 class="svc-title">Residential Interiors</h3>
+        <p class="svc-desc">Interior spaces that reflect your personality and elevate daily living. We curate every element — material, light, texture — to create a home that feels as good as it looks.</p>
+        <div class="svc-items">
+          <span class="svc-tag">Home Interiors</span>
+          <span class="svc-tag">Living Spaces</span>
+          <span class="svc-tag">Kitchens</span>
+          <span class="svc-tag">Bedrooms</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">🏬</div>
+        <h3 class="svc-title">Showroom Interiors</h3>
+        <p class="svc-desc">Commercial interiors that are designed to convert — from premium showrooms to high-performance office environments. We design spaces that make your brand the experience.</p>
+        <div class="svc-items">
+          <span class="svc-tag">Office Interiors</span>
+          <span class="svc-tag">Showroom Design</span>
+          <span class="svc-tag">Retail Interiors</span>
+          <span class="svc-tag">Brand Environments</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══════════════════════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="portfolio-header reveal">
+      <div>
+        <div class="section-eyebrow">Our Work</div>
+        <h2 class="section-title">Selected <em>Portfolio</em></h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="residential">Residential</button>
+        <button class="filter-tab" data-filter="commercial">Commercial</button>
+        <button class="filter-tab" data-filter="interiors">Interiors</button>
+        <button class="filter-tab" data-filter="showroom">Showroom</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid reveal" id="portfolio-grid">
+      <!-- RESIDENTIAL -->
+      <div class="port-item show" data-cat="residential" data-title="Villa — Adyar" data-sub="Residential Design">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=75&auto=format&fit=crop" alt="Villa design Adyar Chennai" loading="lazy">
+        <div class="port-overlay"><h4>Villa — Adyar</h4><p>Residential Design</p></div>
+      </div>
+      <div class="port-item show" data-cat="residential" data-title="Luxury Apartment — OMR" data-sub="Residential Design">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=75&auto=format&fit=crop" alt="Luxury apartment OMR Chennai" loading="lazy">
+        <div class="port-overlay"><h4>Luxury Apartment — OMR</h4><p>Residential Design</p></div>
+      </div>
+      <div class="port-item show" data-cat="residential" data-title="Gated Community — Tambaram" data-sub="Residential Complex">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=75&auto=format&fit=crop" alt="Gated community Tambaram" loading="lazy">
+        <div class="port-overlay"><h4>Gated Community — Tambaram</h4><p>Residential Complex</p></div>
+      </div>
+      <div class="port-item show" data-cat="residential" data-title="Bungalow — Nungambakkam" data-sub="Residential Design">
+        <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=75&auto=format&fit=crop" alt="Bungalow Nungambakkam" loading="lazy">
+        <div class="port-overlay"><h4>Bungalow — Nungambakkam</h4><p>Residential Design</p></div>
+      </div>
+      <div class="port-item show" data-cat="residential" data-title="Flat Renovation — T Nagar" data-sub="Residential Design">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75&auto=format&fit=crop" alt="Flat renovation T Nagar" loading="lazy">
+        <div class="port-overlay"><h4>Flat Renovation — T Nagar</h4><p>Residential Design</p></div>
+      </div>
+
+      <!-- COMMERCIAL -->
+      <div class="port-item show" data-cat="commercial" data-title="Commercial Complex — Guindy" data-sub="Commercial Design">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=75&auto=format&fit=crop" alt="Commercial complex Guindy" loading="lazy">
+        <div class="port-overlay"><h4>Commercial Complex — Guindy</h4><p>Commercial Design</p></div>
+      </div>
+      <div class="port-item show" data-cat="commercial" data-title="Retail Mall — Anna Nagar" data-sub="Commercial Design">
+        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=600&q=75&auto=format&fit=crop" alt="Retail mall Anna Nagar" loading="lazy">
+        <div class="port-overlay"><h4>Retail Mall — Anna Nagar</h4><p>Commercial Design</p></div>
+      </div>
+      <div class="port-item show" data-cat="commercial" data-title="Shop Row — Velachery" data-sub="Commercial Design">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=75&auto=format&fit=crop" alt="Shop design Velachery" loading="lazy">
+        <div class="port-overlay"><h4>Shop Row — Velachery</h4><p>Commercial Design</p></div>
+      </div>
+
+      <!-- INTERIORS -->
+      <div class="port-item show" data-cat="interiors" data-title="Home Interior — Boat Club Rd" data-sub="Residential Interiors">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=75&auto=format&fit=crop" alt="Home interior Boat Club Road" loading="lazy">
+        <div class="port-overlay"><h4>Home Interior — Boat Club Rd</h4><p>Residential Interiors</p></div>
+      </div>
+      <div class="port-item show" data-cat="interiors" data-title="Living Room Redesign — ECR" data-sub="Residential Interiors">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=75&auto=format&fit=crop" alt="Living room ECR" loading="lazy">
+        <div class="port-overlay"><h4>Living Room Redesign — ECR</h4><p>Residential Interiors</p></div>
+      </div>
+      <div class="port-item show" data-cat="interiors" data-title="Kitchen & Dining — Besant Nagar" data-sub="Residential Interiors">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75&auto=format&fit=crop" alt="Kitchen dining Besant Nagar" loading="lazy">
+        <div class="port-overlay"><h4>Kitchen & Dining — Besant Nagar</h4><p>Residential Interiors</p></div>
+      </div>
+      <div class="port-item show" data-cat="interiors" data-title="Master Bedroom — Kilpauk" data-sub="Residential Interiors">
+        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=75&auto=format&fit=crop" alt="Master bedroom Kilpauk" loading="lazy">
+        <div class="port-overlay"><h4>Master Bedroom — Kilpauk</h4><p>Residential Interiors</p></div>
+      </div>
+
+      <!-- SHOWROOM / OFFICE -->
+      <div class="port-item show" data-cat="showroom" data-title="Automobile Showroom — GST Rd" data-sub="Showroom Interiors">
+        <img src="https://images.unsplash.com/photo-1562516155-e0c1ee44059b?w=600&q=75&auto=format&fit=crop" alt="Automobile showroom GST Road" loading="lazy">
+        <div class="port-overlay"><h4>Automobile Showroom — GST Rd</h4><p>Showroom Interiors</p></div>
+      </div>
+      <div class="port-item show" data-cat="showroom" data-title="Corporate Office — Tidel Park" data-sub="Office Interiors">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&auto=format&fit=crop" alt="Corporate office Tidel Park" loading="lazy">
+        <div class="port-overlay"><h4>Corporate Office — Tidel Park</h4><p>Office Interiors</p></div>
+      </div>
+      <div class="port-item show" data-cat="showroom" data-title="Jewellery Showroom — T Nagar" data-sub="Showroom Interiors">
+        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=75&auto=format&fit=crop" alt="Jewellery showroom T Nagar" loading="lazy">
+        <div class="port-overlay"><h4>Jewellery Showroom — T Nagar</h4><p>Showroom Interiors</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIY AI DESIGN STUDIO ═══════════════════════ -->
+<section id="diy">
+  <div class="container">
+    <div class="diy-grid">
+      <div class="diy-info reveal">
+        <div class="section-eyebrow">AI Design Studio</div>
+        <h2 class="section-title">Design Your <em>Space</em><br>Yourself</h2>
+        <div class="gold-rule"></div>
+        <p>Describe your dream space in plain language and our AI architect generates professional 2D plans and 3D renders — tailored exactly to your specifications.</p>
+        <p>Once you're happy with the design, make payment and download your complete drawing set, ready for construction.</p>
+
+        <div class="diy-steps">
+          <div class="diy-step">
+            <div class="diy-step-num">1</div>
+            <div class="diy-step-text">
+              <h4>Sign In & Describe</h4>
+              <p>Create a quick profile and describe your space — dimensions, style, requirements, budget.</p>
+            </div>
+          </div>
+          <div class="diy-step">
+            <div class="diy-step-num">2</div>
+            <div class="diy-step-text">
+              <h4>AI Generates Your Design</h4>
+              <p>Receive a detailed architectural concept with 2D floor plan and 3D rendered view.</p>
+            </div>
+          </div>
+          <div class="diy-step">
+            <div class="diy-step-num">3</div>
+            <div class="diy-step-text">
+              <h4>Refine (Up to 2 Corrections)</h4>
+              <p>Request tweaks via prompt. Up to 2 correction rounds included per design.</p>
+            </div>
+          </div>
+          <div class="diy-step">
+            <div class="diy-step-num">4</div>
+            <div class="diy-step-text">
+              <h4>Pay & Download</h4>
+              <p>Approve the design, complete payment, and download your full drawing package.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="diy-limits">
+          <p>⚠️ <strong>Please Note:</strong> Generated drawings are protected. Screenshots, right-click saving, and screen capture are restricted. Download is available only after payment is completed.</p>
+        </div>
+      </div>
+
+      <!-- AI WINDOW -->
+      <div class="reveal">
+        <div class="ai-window" id="ai-window">
+          <div class="ai-titlebar">
+            <div class="ai-titlebar-left">
+              <div class="ai-dot gold"></div>
+              <div class="ai-dot dim"></div>
+              <div class="ai-dot dim"></div>
+              <span class="ai-title" style="margin-left:8px">Archioz AI Design Studio</span>
+            </div>
+            <span class="ai-badge">✦ Powered by AI</span>
+          </div>
+
+          <!-- AUTH GATE -->
+          <div class="auth-gate" id="auth-gate">
+            <h3>Begin Your Design Journey</h3>
+            <p>Sign in to access the AI Design Studio. Your designs are saved securely to your profile.</p>
+            <div class="auth-form">
+              <input type="text" class="auth-input" id="auth-name" placeholder="Full Name">
+              <input type="email" class="auth-input" id="auth-email" placeholder="Email Address">
+              <input type="tel" class="auth-input" id="auth-phone" placeholder="WhatsApp Number (+91...)">
+              <button class="auth-btn" id="auth-submit">Send OTP & Continue →</button>
+            </div>
+            <p class="auth-note">OTP verification via WhatsApp + Email. Your data is never shared.</p>
+          </div>
+
+          <!-- OTP GATE (hidden) -->
+          <div class="auth-gate" id="otp-gate" style="display:none">
+            <h3>Verify Your Identity</h3>
+            <p>We've sent a 6-digit OTP to your WhatsApp and email. Enter it below to continue.</p>
+            <div class="auth-form">
+              <input type="text" class="auth-input" id="otp-input" placeholder="Enter 6-digit OTP" maxlength="6" style="text-align:center;letter-spacing:.3em;font-size:1.2rem">
+              <button class="auth-btn" id="otp-submit">Verify & Start Designing →</button>
+            </div>
+            <p class="auth-note">Didn't receive? <span style="color:var(--gold);cursor:pointer" id="resend-otp">Resend OTP</span></p>
+          </div>
+
+          <!-- CHAT (hidden initially) -->
+          <div id="chat-ui" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+            <div class="chat-mode-bar">
+              <button class="mode-btn active" id="mode-consult">💬 Consult</button>
+              <button class="mode-btn" id="mode-design">📐 Design Request</button>
+              <span class="corrections-left" id="corrections-counter">Corrections: <strong>2</strong> remaining</span>
+            </div>
+            <div class="chat-area" id="chat-area"></div>
+            <div class="chat-input-area">
+              <textarea class="chat-textarea" id="chat-input" placeholder="Ask anything about architecture, or describe your space for a design..." rows="1"></textarea>
+              <button class="chat-send" id="chat-send" title="Send">➤</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══════════════════════════════════== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Get In Touch</div>
+        <h2 class="section-title">Let's Build <em>Something</em><br>Extraordinary</h2>
+        <div class="gold-rule"></div>
+        <p style="font-size:.9rem;color:var(--muted);line-height:1.85;max-width:380px">
+          Tell us about your project. We'll arrange a complimentary consultation to understand your vision and discuss how we can bring it to life.
+        </p>
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Studio Address</div>
+              <div class="c-val">127 Vallal Yusuf Nagar, Rajakilpakkam,<br>Chennai — 600 073</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">Phone / WhatsApp</div>
+              <div class="c-val"><a href="tel:+919043002745" style="transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">+91 90430 02745</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="c-icon">✉️</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val"><a href="mailto:info@archioz.com" style="transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">info@archioz.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="c-icon">🌐</div>
+            <div>
+              <div class="c-label">Website</div>
+              <div class="c-val">https://archioz.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" class="form-input" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" class="form-input" placeholder="+91...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select a service...</option>
+              <option>Residential Space Design</option>
+              <option>Commercial Space Design</option>
+              <option>Residential Interiors</option>
+              <option>Showroom / Office Interiors</option>
+              <option>AI Design Studio (DIY)</option>
+              <option>Other / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Brief</label>
+            <textarea class="form-textarea" placeholder="Tell us about your project — type, size, location, timeline, and any specific requirements..."></textarea>
+          </div>
+          <button class="form-submit" onclick="handleContactSubmit(event)">Send Enquiry →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/archioz-logo.png" alt="Archioz Design Studio" loading="lazy">
+        </div>
+        <p class="footer-about">Crafting exceptional spaces across Chennai since our founding. Architecture, interiors, and innovation — brought together under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <div class="footer-links">
+          <a href="#services">Residential Space Design</a>
+          <a href="#services">Commercial Space Design</a>
+          <a href="#services">Residential Interiors</a>
+          <a href="#services">Showroom Interiors</a>
+          <a href="#diy">AI Design Studio</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
+          <a href="mailto:info@archioz.com">info@archioz.com</a>
+          <a href="tel:+919043002745">+91 90430 02745</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Archioz Design Studio. All rights reserved. | 127 Vallal Yusuf Nagar, Rajakilpakkam, Chennai 600073</p>
+      <p>Designed & Developed by <span>Scalioz</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ═══ SCRIPTS ═══════════════════════════════════════ -->
+<script>
+// ── NAV ──────────────────────────────────────────────
+const nav = document.getElementById('nav');
+const navToggle = document.getElementById('nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navToggle.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ── REVEAL ON SCROLL ─────────────────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── PORTFOLIO FILTER ─────────────────────────────────
+document.querySelectorAll('.filter-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.port-item').forEach(item => {
+      const show = filter === 'all' || item.dataset.cat === filter;
+      item.classList.toggle('show', show);
+    });
+  });
+});
+
+// Portfolio lightbox
+document.querySelectorAll('.port-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    openLightbox(img.src, img.alt);
+  });
+});
+
+function openLightbox(src, alt) {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  lbImg.src = src; lbImg.alt = alt;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeLightbox();
+});
+
+// ── CONTACT FORM ─────────────────────────────────────
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✓ Enquiry Sent — We\'ll be in touch shortly';
+    btn.style.background = '#1E7C3B';
+  }, 1200);
+}
+
+// ── AI CHAT ──────────────────────────────────────────
+let chatMode = 'consult';
+let correctionsLeft = 2;
+let isDesignMode = false;
+let awaitingPayment = false;
+let userName = '';
+let generatedDesign = null;
+
+// Auth flow
+document.getElementById('auth-submit').addEventListener('click', handleAuthSubmit);
+
+function handleAuthSubmit() {
+  const name = document.getElementById('auth-name').value.trim();
+  const email = document.getElementById('auth-email').value.trim();
+  const phone = document.getElementById('auth-phone').value.trim();
+  if (!name || !email || !phone) { alert('Please fill in all fields.'); return; }
+  userName = name;
+  const btn = document.getElementById('auth-submit');
+  btn.textContent = 'Sending OTP...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('auth-gate').style.display = 'none';
+    document.getElementById('otp-gate').style.display = 'flex';
+  }, 1200);
+}
+
+document.getElementById('otp-submit').addEventListener('click', handleOtpSubmit);
+document.getElementById('resend-otp').addEventListener('click', () => {
+  document.getElementById('resend-otp').textContent = 'OTP Resent ✓';
+});
+
+function handleOtpSubmit() {
+  const otp = document.getElementById('otp-input').value.trim();
+  if (otp.length < 4) { alert('Please enter the OTP.'); return; }
+  const btn = document.getElementById('otp-submit');
+  btn.textContent = 'Verifying...'; btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('otp-gate').style.display = 'none';
+    const chatUI = document.getElementById('chat-ui');
+    chatUI.style.display = 'flex';
+    addMsg('ai', `Welcome, ${userName || 'there'}! 👋\n\nI'm your Archioz AI Architect. I can help you with:\n\n📐 **Design Mode** — Describe your space and I'll generate 2D floor plans and 3D concepts.\n\n💬 **Consult Mode** — Ask me anything about architecture, materials, regulations, construction — anything.\n\nHow can I help you today?`);
+  }, 1200);
+}
+
+// Mode toggle
+document.getElementById('mode-consult').addEventListener('click', () => {
+  chatMode = 'consult';
+  document.getElementById('mode-consult').classList.add('active');
+  document.getElementById('mode-design').classList.remove('active');
+  document.getElementById('chat-input').placeholder = 'Ask anything about architecture, materials, regulations...';
+});
+document.getElementById('mode-design').addEventListener('click', () => {
+  chatMode = 'design';
+  document.getElementById('mode-design').classList.add('active');
+  document.getElementById('mode-consult').classList.remove('active');
+  document.getElementById('chat-input').placeholder = 'Describe your space: type, dimensions, style, rooms, budget...';
+});
+
+// Send
+document.getElementById('chat-send').addEventListener('click', sendMessage);
+document.getElementById('chat-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+
+function sendMessage() {
+  if (awaitingPayment) { addMsg('ai', 'Please complete payment to download your design, or start a new design request.'); return; }
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  addMsg('user', text);
+  input.value = ''; input.style.height = 'auto';
+  showTyping();
+  callArchitectAI(text, chatMode);
+}
+
+function addMsg(role, text) {
+  const area = document.getElementById('chat-area');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = role === 'ai' ? 'A' : (userName ? userName[0].toUpperCase() : 'U');
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  div.appendChild(avatar); div.appendChild(bubble);
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function addImgMsg(imgUrl, caption, showPayment = false) {
+  const area = document.getElementById('chat-area');
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar'; avatar.textContent = 'A';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+
+  // Image with protection
+  const imgWrap = document.createElement('div');
+  imgWrap.className = 'msg-img-wrap';
+  const img = document.createElement('img');
+  img.src = imgUrl; img.alt = 'AI Generated Design';
+  img.style.cssText = 'pointer-events:none;user-select:none;-webkit-user-drag:none;';
+  img.addEventListener('contextmenu', e => e.preventDefault());
+  img.addEventListener('dragstart', e => e.preventDefault());
+  imgWrap.appendChild(img);
+
+  const cap = document.createElement('p');
+  cap.className = 'msg-img-caption'; cap.textContent = caption;
+
+  bubble.appendChild(imgWrap); bubble.appendChild(cap);
+
+  if (showPayment) {
+    const payBlock = document.createElement('div');
+    payBlock.className = 'pay-prompt';
+    payBlock.innerHTML = `
+      <h5>Your Design is Ready</h5>
+      <p>Complete payment to download your full drawing package — floor plan (PDF), 3D render (high-res), and specification sheet.</p>
+      <p style="margin-bottom:12px"><strong style="color:var(--gold)">₹ 4,999</strong> <span style="font-size:.78rem;color:var(--muted)">— One-time design fee</span></p>
+      <button class="pay-btn" onclick="handlePayment()">Pay & Download Package →</button>
+    `;
+    bubble.appendChild(payBlock);
+    awaitingPayment = true;
+  }
+
+  div.appendChild(avatar); div.appendChild(bubble);
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function showTyping() {
+  const area = document.getElementById('chat-area');
+  const div = document.createElement('div');
+  div.className = 'msg ai'; div.id = 'typing-indicator';
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar'; avatar.textContent = 'A';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  const dots = document.createElement('div');
+  dots.className = 'typing-dots';
+  dots.innerHTML = '<span></span><span></span><span></span>';
+  bubble.appendChild(dots);
+  div.appendChild(avatar); div.appendChild(bubble);
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+function updateCorrections() {
+  document.getElementById('corrections-counter').innerHTML =
+    `Corrections: <strong>${correctionsLeft}</strong> remaining`;
+}
+
+function handlePayment() {
+  addMsg('ai', '✓ **Payment Gateway Integration** — In the live version, this will open Razorpay/Stripe for secure payment. Upon confirmation, your design package (floor plan PDF + high-res 3D render + specification sheet) will be available for download immediately.\n\n🎉 Thank you for using Archioz AI Design Studio!');
+  awaitingPayment = false;
+}
+
+// ARCHITECTURE AI SYSTEM PROMPT
+const ARCH_SYSTEM = `You are the Archioz AI Architect — an expert architectural consultant and designer built into the Archioz Design Studio website in Chennai, India.
+
+You have deep, encyclopedic knowledge of:
+- Architecture theory, history, and styles (Modernist, Vernacular, Art Deco, Contemporary, etc.)
+- Indian building codes, NBC (National Building Code), CMDA regulations (Chennai Metropolitan Development Authority), DTCP norms
+- Structural systems: RCC, steel frame, load-bearing, post-tensioned slabs
+- Materials: concrete, brick, AAC blocks, stone, glass, timber, steel
+- MEP (Mechanical, Electrical, Plumbing) basics
+- Interior design: spatial planning, lighting design, material palettes, furniture layout
+- Vastu Shastra principles as they apply to Indian residential design
+- Sustainability: passive cooling, cross-ventilation, green roofs, solar integration
+- Construction methods and sequencing
+- Cost estimation (Indian context, Chennai market rates)
+- 2D drawing conventions: floor plans, elevations, sections, site plans
+- 3D rendering concepts and presentation
+
+Your persona:
+- Warm, professional, and deeply knowledgeable
+- You explain complex concepts in plain, accessible language
+- You always ask clarifying questions when needed
+- You give specific, actionable advice — not vague generalities
+- For Chennai clients, you know local material costs, contractor norms, and climate considerations
+
+For DESIGN REQUESTS:
+When a user requests a design, acknowledge it professionally and describe:
+1. What you'll design based on their brief
+2. Key design decisions you're making and why
+3. Describe the conceptual floor plan clearly (room sizes, layout logic, flow)
+4. Describe the 3D concept (style, materials, key visual elements)
+5. End with: "I'm generating your design now — this will take a moment..."
+
+Keep responses conversational but substantive. Be the world's best architecture consultant.`;
+
+async function callArchitectAI(userMessage, mode) {
+  const isDesign = mode === 'design';
+  const contextMsg = isDesign
+    ? `[DESIGN REQUEST] The user wants a design generated. Acknowledge their brief, describe your design decisions in detail, describe the floor plan and 3D concept clearly, then end with "I'm generating your design now — this will take a moment...". Treat this as if you are about to produce actual drawings.`
+    : `[CONSULTATION] Answer the user's architecture question thoroughly and helpfully.`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: ARCH_SYSTEM,
+        messages: [
+          { role: 'user', content: `${contextMsg}\n\nUser: ${userMessage}` }
+        ]
+      })
+    });
+    const data = await response.json();
+    removeTyping();
+    const reply = data.content?.[0]?.text || 'I apologise — I encountered an issue. Please try again.';
+    addMsg('ai', reply);
+
+    // If design mode — show a placeholder design image after response
+    if (isDesign && reply.toLowerCase().includes('generating')) {
+      setTimeout(() => {
+        showTyping();
+        setTimeout(() => {
+          removeTyping();
+          // Use curated architectural Unsplash images as design placeholders
+          const designImages = [
+            'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80&auto=format&fit=crop',
+          ];
+          const img = designImages[Math.floor(Math.random() * designImages.length)];
+          const isFirstDesign = correctionsLeft === 2;
+          addImgMsg(img, isFirstDesign ? 'Concept Design — Floor Plan & 3D Render (Watermarked Preview)' : `Revised Design — Correction ${3 - correctionsLeft} of 2`, true);
+          if (!isFirstDesign) {
+            correctionsLeft--;
+            updateCorrections();
+            if (correctionsLeft === 0) {
+              addMsg('ai', '⚠️ You have used all 2 correction rounds for this design. Please proceed to payment to download your final design package, or start a new design request.');
+            }
+          } else {
+            addMsg('ai', `Here is your concept design, ${userName}! 🎉\n\nYou have **2 correction rounds** available. If you'd like any changes — layout, style, dimensions, materials — just describe them and I'll revise the design for you.\n\nWhen you're happy with the result, complete payment to download your full drawing package.`);
+          }
+        }, 3000);
+      }, 800);
+    }
+  } catch (err) {
+    removeTyping();
+    addMsg('ai', 'I encountered a connectivity issue. Please check your internet connection and try again.');
+  }
+}
+</script>
+</body>
+</html>
